@@ -1,0 +1,157 @@
+/* =========================================================================
+   LA TARANTA - Adaptacion a pantallas
+   Puntos de control revisados: 1440 / 1024 / 768 / 375 px
+   ========================================================================= */
+
+/* ------------------------------------------------------ >= 1440 (amplio) */
+@media (min-width: 1440px) {
+  :root { --ancho: 1320px; }
+  .hero__int { padding-block: clamp(4rem, 10vh, 8rem) clamp(3.5rem, 8vh, 6rem); }
+}
+
+/* ------------------------------------------------------------- <= 1100 px */
+@media (max-width: 1100px) {
+  .mapa-layout { grid-template-columns: 1fr; }
+  .mapa-panel { min-height: 0; }
+  .mapa-panel__foto { aspect-ratio: 21/9; }
+  .pie__grid { grid-template-columns: 1fr 1fr; }
+  .galeria { columns: 2; }
+}
+
+/* ------------------------- <= 1180 px (la navegacion completa deja de caber) */
+@media (max-width: 1180px) {
+  :root { --header-h: 78px; }
+
+  .nav { display: none; }
+  .hamburguesa { display: block; }
+  .cabecera .boton--cabecera { display: none; }
+
+  .mosaico__a, .mosaico__b, .mosaico__c, .mosaico__d { grid-column: span 6; }
+  .duo--desfase > :nth-child(even) { margin-top: 0; }
+
+  .espacio { grid-template-columns: 1fr !important; }
+  .espacio__foto { order: -1; }
+
+  .carta-barra { top: 62px; }
+  .cabecera.es-solida { height: 62px; }
+}
+
+/* ------------------------------------------------ <= 768 px (tablet/movil) */
+@media (max-width: 768px) {
+  :root { --sec-y: clamp(3.2rem, 9vw, 4.6rem); }
+
+  h1 { font-size: clamp(2.4rem, 1.4rem + 5.6vw, 3.6rem); }
+
+  .hero { min-height: 92svh; }
+  .hero--interior { min-height: 58svh; }
+  .hero__logo { width: min(74vw, 300px); }
+  .hero__scroll { display: none; }
+
+  .mosaico__a, .mosaico__b, .mosaico__c, .mosaico__d { grid-column: span 12; }
+  .mosaico__b { align-self: auto; }
+
+  .trio, .cuarteto { grid-template-columns: 1fr; }
+
+  /* En tactil no hay cursor que pasear: los cuatro vanos se ven por igual
+     y el activo se distingue por nitidez y color, no por apagar los demas. */
+  .arqueria__vanos { grid-template-columns: repeat(2, 1fr); gap: .8rem 1rem; }
+  .vano__arco { aspect-ratio: 4 / 5.2; }
+  .vano__arco img { filter: saturate(.9) brightness(.95); }
+  .vano__arco::after { background: linear-gradient(180deg, rgba(23,21,17,.05) 0%, rgba(23,21,17,.45) 100%); }
+  .arqueria__vanos.tiene-activo .vano { opacity: .92; }
+  .arqueria__vanos .vano.es-activo { opacity: 1; transform: none; }
+  .vano.es-activo .vano__arco { outline: 1px solid rgba(181,154,85,.85); outline-offset: 3px; }
+  .vano.es-activo .vano__arco img { filter: saturate(1.05) brightness(1.05); }
+  .vano__pie { margin-top: .6rem; }
+  .duo { gap: 2rem; }
+
+  .galeria { columns: 2; column-gap: .7rem; }
+  .galeria figure { margin-bottom: .7rem; }
+  .galeria figcaption { opacity: 1; transform: none; font-size: .68rem; padding: 1rem .7rem .6rem; }
+
+  .ficha-plato__caja { flex-direction: column; }
+  .ficha-plato__foto { flex: 0 0 auto; height: min(42svh, 300px); }
+  .ficha-plato__texto { padding-top: 1.4rem; }
+  .poema__int { grid-template-columns: 1fr; }
+  .poema__azulejo { max-width: 320px; margin-inline: auto; }
+  .carta-pestana { padding: .9rem 1rem; }
+
+  .pase { grid-template-columns: 1fr; gap: .4rem; }
+  .pase__num { font-size: 2.4rem; }
+
+  .pie__grid { grid-template-columns: 1fr; gap: 2.2rem; }
+  .pie__legal { flex-direction: column; gap: .8rem; }
+
+  /* En movil manda la barra inferior; los botones flotantes se retiran */
+  .barra-movil { display: flex; }
+  .flotantes { display: none; }
+  body { padding-bottom: 64px; }
+  .pie { padding-bottom: 5rem; }
+
+  .widget-reserva iframe { height: 1020px; }
+  .widget-reserva { padding: .4rem; }
+
+  .acciones .boton { flex: 1 1 100%; }
+
+  .carta-barra__int { gap: .7rem; }
+  /* Los filtros se deslizan en horizontal: flex-start evita que el primero
+     quede cortado e inalcanzable, y la mascara avisa de que hay mas. */
+  .filtros {
+    width: 100%; overflow-x: auto; flex-wrap: nowrap;
+    justify-content: flex-start !important;
+    padding: 0 1.2rem .3rem 0; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
+  }
+  .filtros::-webkit-scrollbar { display: none; }
+  .filtros .filtro { scroll-snap-align: start; }
+  .buscador { flex: 1 1 100%; }
+
+  .lightbox__ant, .lightbox__sig { top: auto; bottom: clamp(1rem, 3vw, 2rem); transform: none; width: 46px; height: 46px; }
+  .lightbox__ant { left: 22%; }
+  .lightbox__sig { right: 22%; }
+  .lightbox__fig figcaption { padding-bottom: 3.6rem; }
+
+  .mapa-svg .marcador text { font-size: 26px; }
+  .mapa-chips { display: flex; }
+}
+
+/* ------------------------------------------------------ <= 520 px (movil) */
+@media (max-width: 520px) {
+  :root { --gutter: 1.15rem; }
+
+  .plato { grid-template-columns: 1fr auto; gap: .35rem .9rem; padding: 1.2rem 0; }
+  .plato--con-foto { grid-template-columns: 70px 1fr auto; }
+  .plato__foto { width: 70px; height: 70px; }
+  .plato__precio { font-size: 1.05rem; }
+
+  .galeria { columns: 1; }
+
+  .datos { grid-template-columns: 1fr 1fr; }
+
+  .marco--alto { aspect-ratio: 4/5; }
+
+  .cita { font-size: 1.45rem; max-width: none; }
+
+  .flotantes { right: 1rem; bottom: 1rem; }
+  .flotante { width: 50px; height: 50px; }
+
+  .mapa-marco { padding: .5rem; }
+  .mapa-svg .marcador text { display: none; }
+}
+
+/* --------------------------------------------- <= 380 px (movil pequeno) */
+@media (max-width: 380px) {
+  .marca img { width: 140px; }
+  .hero__lema { font-size: 1.25rem; }
+  .boton { padding: .9rem 1.4rem; font-size: .68rem; letter-spacing: .16em; }
+}
+
+/* --------------------------------------------- Pantallas muy bajas/apaisadas */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero { min-height: 560px; }
+  .menu-movil { justify-content: flex-start; }
+  .menu-movil nav a { font-size: 1.3rem; padding: .3rem 0; }
+}

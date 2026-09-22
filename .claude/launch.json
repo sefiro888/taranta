@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "taranta",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        ".claude/servidor-demo.py"
+      ],
+      "port": 8123
+    }
+  ]
+}
