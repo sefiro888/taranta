@@ -103,6 +103,34 @@
 
 <main id="contenido">
 
+<div class="umbral" id="umbral" hidden role="presentation">
+  <div class="umbral__hoja umbral__hoja--izq"></div>
+  <div class="umbral__hoja umbral__hoja--der"></div>
+
+  <div class="umbral__int">
+    <div class="umbral__marco">
+    <svg class="umbral__arco" viewBox="0 0 240 300" aria-hidden="true" focusable="false">
+      <!-- alfiz: el marco rectangular que encuadra el arco -->
+      <path class="tardio2" d="M22 300 L22 26 L218 26 L218 300"/>
+      <!-- arquivolta exterior: arco de herradura apuntado -->
+      <path d="M50 300 L50 190 A95 95 0 0 1 120 40 A95 95 0 0 1 190 190 L190 300"/>
+      <!-- arco interior -->
+      <path class="tardio" d="M64 300 L64 190 A80 80 0 0 1 120 56 A80 80 0 0 1 176 190 L176 300"/>
+      <!-- impostas -->
+      <line class="tardio2" x1="34" y1="190" x2="50" y2="190"/>
+      <line class="tardio2" x1="190" y1="190" x2="206" y2="190"/>
+      <line class="tardio2" x1="64" y1="190" x2="76" y2="190"/>
+      <line class="tardio2" x1="164" y1="190" x2="176" y2="190"/>
+    </svg>
+      <img class="umbral__logo" src="assets/logo/logo-marfil.png" width="949" height="433"
+           alt="La Taranta · Andalucía en el corazón de Asturias">
+    </div>
+
+    <p class="umbral__frase">Sabores del sur que conquistan el norte</p>
+    <p class="umbral__pie">Toque para entrar</p>
+  </div>
+</div>
+
 <section class="hero">
   <div class="hero__media">
     <picture>
@@ -432,6 +460,7 @@
 
 <script src="js/main.js"></script>
 <script src="js/reservas.js"></script>
+<script src="js/intro.js"></script>
 <script src="data/menu-data.js"></script>
 <script src="js/mapa-andalucia.js"></script>
 </body>

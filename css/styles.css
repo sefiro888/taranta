@@ -49,6 +49,85 @@
   --header-h: 92px;
 }
 
+/* ------------------------------------------- 0. UMBRAL DE ENTRADA
+   Cortina de bienvenida: el arco se dibuja, entra el logotipo y despues
+   las dos hojas se abren. Solo en la portada y una vez por sesion.       */
+body.con-umbral { overflow: hidden; }
+
+.umbral {
+  position: fixed; inset: 0; z-index: 200;
+  display: grid; place-items: center;
+  cursor: pointer;
+  background: var(--carbon);
+}
+.umbral[hidden] { display: none; }
+
+/* Las dos hojas que se abren al final */
+.umbral__hoja {
+  position: absolute; top: 0; bottom: 0; width: 50.5%;
+  background: var(--carbon);
+  transition: transform 1s cubic-bezier(.76,.02,.26,1);
+}
+.umbral__hoja--izq { left: 0; }
+.umbral__hoja--der { right: 0; }
+.umbral__hoja::after {
+  content: ''; position: absolute; inset: 0; opacity: .07;
+  background-image: inherit;
+}
+
+.umbral__int {
+  position: relative; z-index: 2; text-align: center;
+  display: grid; justify-items: center; gap: 0;
+  padding: var(--gutter);
+  transition: opacity 620ms ease, transform 620ms ease;
+}
+
+/* Arco dibujado a trazo */
+.umbral__arco { width: min(66vw, 290px); height: auto; display: block; }
+.umbral__arco path, .umbral__arco line {
+  fill: none; stroke: var(--dorado); stroke-width: 1.6;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: var(--largo, 900); stroke-dashoffset: var(--largo, 900);
+  animation: trazar 1500ms cubic-bezier(.4,0,.2,1) forwards;
+}
+.umbral__arco .tardio { animation-delay: 420ms; }
+.umbral__arco .tardio2 { animation-delay: 640ms; }
+
+@keyframes trazar { to { stroke-dashoffset: 0; } }
+
+/* El arco y el logotipo comparten marco: el logo se centra en el vano */
+.umbral__marco { position: relative; display: inline-block; line-height: 0; }
+.umbral__logo {
+  position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%);
+  width: 60%; opacity: 0;
+  animation: aparecerLogo 900ms ease 900ms forwards;
+}
+@keyframes aparecerLogo {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 12px)); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+.umbral__frase {
+  font-family: var(--display); font-style: italic; line-height: 1.5;
+  font-size: clamp(1rem, .9rem + .7vw, 1.35rem);
+  color: var(--dorado-claro); margin: 1.2rem 0 0; max-width: 26ch;
+  opacity: 0; animation: aparecer 900ms ease 1400ms forwards;
+}
+.umbral__pie {
+  font-size: .58rem; letter-spacing: .34em; text-transform: uppercase;
+  color: var(--texto-inv-s); margin-top: 2.2rem;
+  opacity: 0; animation: aparecer 900ms ease 1900ms forwards;
+}
+
+@keyframes aparecer { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* Apertura */
+.umbral.es-abierto .umbral__int { opacity: 0; transform: scale(1.04); }
+.umbral.es-abierto .umbral__hoja--izq { transform: translateX(-101%); }
+.umbral.es-abierto .umbral__hoja--der { transform: translateX(101%); }
+.umbral.es-abierto { background: transparent; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) { .umbral { display: none; } }
+
 /* ----------------------------------------------------------- 2. BASE/RESET */
 *, *::before, *::after { box-sizing: border-box; }
 

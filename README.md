@@ -65,6 +65,11 @@ dorado envejecido #B59A55, granate #542B26 y marrón madera #3A2B20.
 
 ## 3. Funcionalidades
 
+- **Umbral de entrada** (`js/intro.js`): al llegar a la portada, un arco de herradura
+  apuntado se dibuja trazo a trazo en dorado, aparecen dentro el logotipo y la frase
+  «Sabores del sur que conquistan el norte», y las dos hojas se abren dejando ver la web.
+  Solo en la portada, una vez por sesión, se salta con un toque o con `Esc`, y no se
+  muestra a quien tenga activado «reducir movimiento».
 - **Mapa interactivo de Andalucía** en SVG, con las ocho provincias reales: hover e
   iluminación en escritorio, toque y botones de provincia en móvil, panel con el pase
   correspondiente, navegación anterior/siguiente, teclado (Tab, Enter, flechas) y
