@@ -6,6 +6,12 @@ La Taranta (calle Rosal, 22-24, Oviedo). No es la web oficial del restaurante.
 
 Para verla: abra `index.html` en el navegador (funciona sin servidor), o ejecute
 `python .claude/servidor-demo.py` y visite `http://localhost:8123`.
+En línea: **https://sefiro888.github.io/taranta/**
+
+**Antes de la reunión con el restaurante, lea [PARA-LA-REUNION.md](PARA-LA-REUNION.md)**:
+recoge el guion de lo que enseñar, las preguntas que hacer, los 15 datos a confirmar, los
+3 permisos que hay que pedir, el material que debe aportar el cliente y el catálogo
+completo de 75 mejoras con su estado.
 
 ---
 
@@ -13,6 +19,8 @@ Para verla: abra `index.html` en el navegador (funciona sin servidor), o ejecute
 
 ```
 flamecontaranta/
+├── PARA-LA-REUNION.md         Guion, preguntas, datos a confirmar, material que
+│                              debe aportar el cliente y las 75 mejoras posibles
 ├── index.html                 Portada (foto del patio con los geranios)
 ├── experiencia.html           La visita, en nueve momentos
 ├── carta.html                 Carta digital con filtros y buscador
