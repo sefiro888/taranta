@@ -40,6 +40,8 @@ flamecontaranta/
 ├── assets/logo/               Logotipo real en sus distintas versiones
 ├── assets/images/             Fotografías optimizadas (1800 px y 900 px)
 │
+├── extras/umbral/             Umbral de entrada, retirado de la web pero guardado
+│                              (arco polilobulado, su generador, CSS y JS)
 ├── logo.jpg                   Archivo original del cliente (sin modificar)
 ├── _material-original/        Descargas originales sin procesar (no forman parte de la web)
 └── .claude/servidor-demo.py   Servidor local opcional para previsualizar
@@ -65,11 +67,6 @@ dorado envejecido #B59A55, granate #542B26 y marrón madera #3A2B20.
 
 ## 3. Funcionalidades
 
-- **Umbral de entrada** (`js/intro.js`): al llegar a la portada, un arco de herradura
-  apuntado se dibuja trazo a trazo en dorado, aparecen dentro el logotipo y la frase
-  «Sabores del sur que conquistan el norte», y las dos hojas se abren dejando ver la web.
-  Solo en la portada, una vez por sesión, se salta con un toque o con `Esc`, y no se
-  muestra a quien tenga activado «reducir movimiento».
 - **Mapa interactivo de Andalucía** en SVG, con las ocho provincias reales: hover e
   iluminación en escritorio, toque y botones de provincia en móvil, panel con el pase
   correspondiente, navegación anterior/siguiente, teclado (Tab, Enter, flechas) y
@@ -114,6 +111,9 @@ dorado envejecido #B59A55, granate #542B26 y marrón madera #3A2B20.
 - **Cenefa de lacería** dibujada a partir del alicatado real de la barra del local, usada
   como remate de sección y como textura de fondo.
 - Fundido corto de entrada en cada página.
+- **Recursos versionados**: cada hoja de estilo, script y archivo de datos se enlaza con
+  `?v=<huella del archivo>`, así que al publicar un cambio el navegador descarga la
+  versión nueva en lugar de servir la que tiene guardada.
 - Cabecera fija que se compacta, menú móvil a pantalla completa, animaciones de entrada
   suaves (desactivadas si el sistema pide menos movimiento), enlace «saltar al contenido»,
   metaetiquetas y Open Graph por página, datos estructurados `Restaurant` en la portada,

@@ -6,7 +6,7 @@
 /* ------------------------------------------------------ >= 1440 (amplio) */
 @media (min-width: 1440px) {
   :root { --ancho: 1320px; }
-  .hero__int { padding-block: clamp(4rem, 10vh, 8rem) clamp(3.5rem, 8vh, 6rem); }
+  .hero__int { padding-block: calc(var(--header-h) + clamp(1rem, 5vh, 3.5rem)) clamp(3.5rem, 8vh, 6rem); }
 }
 
 /* ------------------------------------------------------------- <= 1100 px */
