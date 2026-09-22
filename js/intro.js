@@ -28,7 +28,7 @@
 
   /* Cada trazo se anima segun su longitud real, para que el dibujo
      salga parejo aunque los paths tengan tamanos distintos. */
-  umbral.querySelectorAll('.umbral__arco path, .umbral__arco line').forEach(function (t) {
+  umbral.querySelectorAll('.umbral__arco .trazos path, .umbral__arco .trazos line').forEach(function (t) {
     var largo = 0;
     try { largo = Math.ceil(t.getTotalLength()); } catch (e) { largo = 900; }
     if (largo > 0) {
@@ -67,7 +67,7 @@
   document.addEventListener('keydown', alPulsar);
 
   /* Se abre solo cuando termina la secuencia */
-  temporizador = setTimeout(cerrar, 3400);
+  temporizador = setTimeout(cerrar, 4200);
 
   /* Salvaguarda: si algo fallase en la secuencia, la cortina no se queda
      puesta mas de seis segundos en ningun caso. */

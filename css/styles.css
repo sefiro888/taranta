@@ -82,40 +82,53 @@ body.con-umbral { overflow: hidden; }
   transition: opacity 620ms ease, transform 620ms ease;
 }
 
-/* Arco dibujado a trazo */
-.umbral__arco { width: min(66vw, 290px); height: auto; display: block; }
-.umbral__arco path, .umbral__arco line {
-  fill: none; stroke: var(--dorado); stroke-width: 1.6;
-  stroke-linecap: round; stroke-linejoin: round;
+/* El arco: primero se dibujan los contornos, luego entran las capas de
+   yeseria, laceria y alicatado, y por ultimo la luz del vano.            */
+.umbral__arco { width: min(84vw, 430px); height: auto; display: block; }
+
+.umbral__arco .trazos path, .umbral__arco .trazos line {
   stroke-dasharray: var(--largo, 900); stroke-dashoffset: var(--largo, 900);
-  animation: trazar 1500ms cubic-bezier(.4,0,.2,1) forwards;
+  animation: trazar 1100ms cubic-bezier(.4,0,.2,1) forwards;
 }
-.umbral__arco .tardio { animation-delay: 420ms; }
-.umbral__arco .tardio2 { animation-delay: 640ms; }
+.umbral__arco .t2 { animation-delay: 220ms; }
+.umbral__arco .t3 { animation-delay: 420ms; }
+
+/* Capas de relleno: aparecen despues del trazo */
+.umbral__arco .cap { opacity: 0; animation: aparecerCapa 800ms ease forwards; }
+.umbral__arco .cap--arco      { animation-delay: 820ms; }
+.umbral__arco .cap--alfiz     { animation-delay: 980ms; }
+.umbral__arco .cap--capiteles { animation-delay: 1100ms; }
+.umbral__arco .cap--zocalo    { animation-delay: 1200ms; }
+.umbral__arco .cap--luz       { animation-delay: 1350ms; animation-duration: 1200ms; }
 
 @keyframes trazar { to { stroke-dashoffset: 0; } }
+@keyframes aparecerCapa { to { opacity: 1; } }
+
+@keyframes aparecer { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
 
 /* El arco y el logotipo comparten marco: el logo se centra en el vano */
 .umbral__marco { position: relative; display: inline-block; line-height: 0; }
 .umbral__logo {
-  position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%);
-  width: 60%; opacity: 0;
-  animation: aparecerLogo 900ms ease 900ms forwards;
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 36%; opacity: 0;
+  animation: aparecerLogo 900ms ease 1600ms forwards;
 }
 @keyframes aparecerLogo {
   from { opacity: 0; transform: translate(-50%, calc(-50% + 12px)); }
   to   { opacity: 1; transform: translate(-50%, -50%); }
 }
+
 .umbral__frase {
   font-family: var(--display); font-style: italic; line-height: 1.5;
   font-size: clamp(1rem, .9rem + .7vw, 1.35rem);
-  color: var(--dorado-claro); margin: 1.2rem 0 0; max-width: 26ch;
-  opacity: 0; animation: aparecer 900ms ease 1400ms forwards;
+  color: var(--dorado-claro); margin: 1.4rem 0 0; max-width: 26ch;
+  opacity: 0; animation: aparecer 900ms ease 2150ms forwards;
 }
 .umbral__pie {
   font-size: .58rem; letter-spacing: .34em; text-transform: uppercase;
-  color: var(--texto-inv-s); margin-top: 2.2rem;
-  opacity: 0; animation: aparecer 900ms ease 1900ms forwards;
+  color: var(--texto-inv-s); margin-top: 1.8rem;
+  opacity: 0; animation: aparecer 900ms ease 2600ms forwards;
 }
 
 @keyframes aparecer { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
