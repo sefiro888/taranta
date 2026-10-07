@@ -4,3 +4,7 @@ _material-original/
 # Sistema
 Thumbs.db
 .DS_Store
+
+# Notas internas de negociacion (no publicar)
+INFORME-DOMINIO.md
+CHULETA-LLAMADA.md
