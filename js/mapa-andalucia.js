@@ -106,6 +106,13 @@
     contenedor.appendChild(pista);
   }
 
+  /* Los alergenos vienen de las cartas oficiales del restaurante. Si un pase
+     no los trae declarados, no se inventa nada: simplemente no se muestran. */
+  function alergenos(p) {
+    if (!p || !p.alergenos || !p.alergenos.length) return '';
+    return '<p class="alergenos"><b>Alérgenos</b> ' + p.alergenos.join(' · ') + '</p>';
+  }
+
   /* ------------------------------------------------------------- Panel */
   function pintarPanel(prov, indice) {
     if (!panel) return;
@@ -122,7 +129,7 @@
       '<h3>' + prov.nombre + '</h3>' +
       '<p class="mapa-panel__titular">' + prov.titular + '</p>' +
       '<p class="mapa-panel__texto">' + prov.texto + '</p>' +
-      '<div class="mapa-panel__pase"><b>El pase</b><p>' + prov.pase + '</p></div>' +
+      '<div class="mapa-panel__pase"><b>El pase</b><p>' + prov.pase + '</p>' + alergenos(prov) + '</div>' +
       '<div class="mapa-panel__nav">' +
         '<button type="button" data-mapa-ant>Anterior</button>' +
         '<button type="button" data-mapa-sig>Siguiente</button>' +
@@ -177,9 +184,9 @@
       { b: 'Recorrido', v: 'De Jaén a Almería', s: 'Del aceite al dulce' },
       { b: 'Reserva anticipada', v: F.antelacion, s: 'De antelación' },
       { b: 'Maridaje', v: 'Vinos del sur', s: 'Finos, manzanillas, olorosos y amontillados' },
-      { b: 'Duración aproximada', v: '— h — min', pendiente: true },
-      { b: 'Mínimo de comensales', v: '—', pendiente: true },
-      { b: 'Días disponibles', v: 'Toda la semana / fines de semana', pendiente: true }
+      { b: 'Mínimo de comensales', v: 'Dos personas', s: 'El menú se sirve para la mesa' },
+      { b: 'Días disponibles', v: 'Todos', s: 'Excepto los martes, que cerramos' },
+      { b: 'Duración aproximada', v: '— h — min', pendiente: true }
     ];
     var h = '';
     campos.forEach(function (c) {
@@ -202,6 +209,7 @@
           '<p class="pase__provincia">' + p.nombre + ' &middot; ' + p.titular + '</p>' +
           '<h3>' + p.pase + '</h3>' +
           '<p class="pase__desc">' + p.texto + '</p>' +
+          alergenos(p) +
           (p.img ? '<div class="pase__foto"><div class="marco marco--ancho marco--filete"><img src="' + p.img + '" alt="' + (p.alt || p.nombre) + '" loading="lazy"></div></div>' : '') +
         '</div>' +
       '</article>';
@@ -213,6 +221,7 @@
           '<p class="pase__provincia">' + window.HOMENAJE.nombre + '</p>' +
           '<h3>' + window.HOMENAJE.pase + '</h3>' +
           '<p class="pase__desc">' + window.HOMENAJE.texto + '</p>' +
+          alergenos(window.HOMENAJE) +
         '</div>' +
       '</article>';
     }

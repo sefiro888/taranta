@@ -841,6 +841,22 @@ button.plato__foto:hover img { transform: scale(1.07); }
 .pase__foto { margin-top: 1.2rem; max-width: 420px; }
 .pase--homenaje { border-top-width: 2px; border-top-color: var(--terracota); }
 
+/* Alergenos: obligatorios por normativa, pero no deben competir con el plato.
+   Van en cuerpo pequeno, con la etiqueta en versalitas y el listado en cursiva. */
+.alergenos {
+  margin: .9rem 0 0; font-size: .78rem; line-height: 1.5;
+  font-style: italic; color: var(--texto-suave);
+}
+.alergenos b {
+  font-style: normal; font-weight: 500;
+  font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--oliva); margin-right: .45rem;
+}
+.fondo-carbon .alergenos { color: var(--texto-inv-s); }
+.fondo-carbon .alergenos b,
+.mapa-panel__pase .alergenos b { color: var(--dorado); }
+.mapa-panel__pase .alergenos { color: rgba(236, 231, 216, .72); }
+
 /* ------------------------------------------- 12 bis. FICHA DEL MENU
    Datos de cabecera del menu degustacion. Los campos aun no confirmados
    se presentan como huecos a completar con el restaurante, no como error. */

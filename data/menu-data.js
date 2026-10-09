@@ -190,42 +190,51 @@ window.PROVINCIAS = [
     titular: 'Simplemente Jaén',
     texto: 'La tierra del propietario y del cocinero, y la del aceite. El mar de olivos abre el viaje.',
     pase: 'Falsa trufa de paté de perdiz, piñones, A.O.V.E. texturizado y toque de flores.',
+    alergenos: ['gluten', 'soja', 'frutos secos', 'huevo'],
     img: 'assets/images/plato-falsa-trufa-jaen.jpg',
     alt: 'Falsa trufa de paté de perdiz, primer pase del menú degustación, fotografía publicada por La Taranta en su Instagram' },
   { id: 'malaga', nombre: 'Málaga', orden: 2,
-    titular: 'Málaga la bella',
+    titular: 'Málaga la Bella',
     texto: 'La almendra y el vinagre, el mar y la huerta: el ajoblanco servido sobre una ostra.',
-    pase: 'Ostra, crema de ajo blanco y boquerón en vinagre.' },
+    pase: 'Ostra, crema de ajo blanco y boquerón en vinagre.',
+    alergenos: ['molusco', 'gluten', 'pescado', 'sulfitos', 'frutos secos'] },
   { id: 'granada', nombre: 'Granada', orden: 3,
     titular: 'De visita por la Alpujarra de Granada',
     texto: 'Chorizo ibérico, patata, huevo y padrón: la tapa alpujarreña llevada al tartar.',
-    pase: 'Tartar de chorizo ibérico, espuma de patata, huevo, panceta ibérica y padrón.' },
+    pase: 'Tartar de chorizo ibérico, espuma de patata, huevo, panceta ibérica y padrón.',
+    alergenos: ['huevo'] },
   { id: 'cadiz', nombre: 'Cádiz', orden: 4,
     titular: 'De chirigotas por Cádiz',
     texto: 'La bahía en un bocado crujiente, con un punto cítrico que despierta.',
-    pase: 'Tortita de camarones crujiente y mayonesa de lima.' },
+    pase: 'Tortita de camarones crujiente y mahonesa de lima.',
+    alergenos: ['gluten', 'marisco', 'lácteos'] },
   { id: 'cordoba', nombre: 'Córdoba', orden: 5,
     titular: 'Córdoba la llana',
     texto: 'Guiso largo de toda la vida convertido en canelón, con trufa y queso ahumado.',
-    pase: 'Canelón de rabo de toro, crema trufada y lascas de queso ahumado.' },
+    pase: 'Canelón de rabo de toro, crema trufada y lascas de queso ahumado.',
+    alergenos: ['huevo', 'lácteos', 'sulfitos', 'gluten'] },
   { id: 'sevilla', nombre: 'Sevilla', orden: 6,
-    titular: 'Paseando por Sevilla en la Feria de Abril',
+    titular: 'Paseando por Sevilla en la feria de abril',
     texto: 'Tradición de barra y de convento: bacalao, tomate y patata revolcona con técnica de hoy.',
-    pase: 'Bacalao a baja temperatura, patata revolcona y tomate especiado.' },
+    pase: 'Bacalao a baja temperatura, patata revolcona y tomate especiado.',
+    alergenos: ['pescado', 'huevo'] },
   { id: 'huelva', nombre: 'Huelva', orden: 7,
     titular: 'Pisando las arenas del Rocío a Huelva',
     texto: 'De la sierra de Aracena llega el ibérico, trabajado aquí con caldo de jamón y setas.',
-    pase: 'Presa ibérica D.O. Jabugo, caldo de jamón y setas.' },
+    pase: 'Presa ibérica D.O. Jabugo, caldo de jamón y setas.',
+    alergenos: ['gluten', 'sulfitos'] },
   { id: 'almeria', nombre: 'Almería', orden: 8,
     titular: 'Un toque dulce de Almería',
     texto: 'Cierra el recorrido por el sur un buñuelo caliente de crema de vainilla.',
-    pase: 'Buñuelo con crema de vainilla y mousse de chocolate blanco.' }
+    pase: 'Buñuelo con crema de vainilla y mousse de chocolate blanco.',
+    alergenos: ['gluten', 'huevo', 'lácteos'] }
 ];
 
 window.HOMENAJE = {
-  nombre: 'Homenaje a Micaela',
+  nombre: 'Homenaje a la abuela Micaela',
   pase: 'Helado de A.O.V.E., pestiños y espuma de leche merengada.',
-  texto: 'El último pase no pertenece a ninguna provincia: pertenece a una cocina de casa. Cierra el viaje donde empiezan todas las cocinas del sur.'
+  texto: 'El último pase no pertenece a ninguna provincia: es el homenaje del chef a su abuela. Cierra el viaje donde empiezan todas las cocinas del sur.',
+  alergenos: ['gluten', 'huevo', 'lácteos']
 };
 
 /* ------------------------------------------- FICHA DEL MENU DEGUSTACION
@@ -234,7 +243,9 @@ window.MENU_FICHA = {
   precio: 75.00,
   pases: 9,
   antelacion: '48 horas',
-  maridaje: 'Selección de vinos del sur: finos, manzanillas, olorosos y amontillados. Se añade aparte para potenciar los sabores del menú.'
+  comensales: 'Mínimo dos personas',
+  maridaje: 'Selección de vinos del sur: finos, manzanillas, olorosos y amontillados. Se añade aparte para potenciar los sabores del menú.',
+  nota: 'El menú puede tener variaciones según disponibilidad de producto.'
 };
 
 /* ------------------------------------------------------------------ POEMA
