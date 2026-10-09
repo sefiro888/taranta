@@ -911,6 +911,25 @@ button.plato__foto:hover img { transform: scale(1.07); }
 .pase__foto { margin-top: 1.2rem; max-width: 420px; }
 .pase--homenaje { border-top-width: 2px; border-top-color: var(--terracota); }
 
+/* Hueco reservado para una fotografia que el restaurante aun no ha
+   facilitado. Mejor un sitio marcado que una imagen prestada. */
+.hueco-foto {
+  display: grid; place-items: center; padding: clamp(2rem, 5vw, 3.5rem);
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(126,120,36,.05) 0 10px, transparent 10px 20px),
+    var(--marfil-2);
+  border: 1px dashed rgba(126,120,36,.45);
+}
+.hueco-foto__aviso { text-align: center; max-width: 30ch; }
+.hueco-foto__etiqueta {
+  display: inline-block; margin-bottom: .9rem;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--oliva); border: 1px solid rgba(126,120,36,.5);
+  border-radius: 999px; padding: .4rem .9rem;
+}
+.hueco-foto__aviso p { margin: 0; font-size: .88rem; line-height: 1.6; color: var(--texto-suave); }
+
 /* Apunte: lo que no cabe en una carta impresa. Explica el termino andaluz
    o de donde viene el plato. Es voz de la casa, no de la carta, y por eso
    va con filete lateral y en cuerpo menor. */
