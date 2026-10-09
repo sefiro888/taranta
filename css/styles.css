@@ -27,6 +27,9 @@
   --texto-inv:    #EDE3D4;
   --texto-inv-s:  #B7AB96;
 
+  /* Icono de documento, usado en las descargas de las cartas */
+  --icono-pdf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6m0 2 5 5h-5V4M8 13h8v1.5H8V13m0 3h8v1.5H8V16Z'/%3E%3C/svg%3E");
+
   /* Tipografia */
   --display: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
   --texto-ff: 'Jost', 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -713,6 +716,35 @@ p:last-child { margin-bottom: 0; }
   margin-top: 2.5rem; padding: 1.1rem 1.4rem; border-left: 2px solid var(--dorado);
   background: rgba(181,154,85,.09); font-size: .85rem; color: var(--texto-suave);
 }
+
+/* Las cartas en PDF, tal como las imprime el restaurante. Mucha gente
+   prefiere abrir la carta entera antes que navegar por secciones. */
+.descargas { margin-top: 1.8rem; }
+.descargas ul {
+  list-style: none; margin: .9rem 0 0; padding: 0;
+  display: grid; gap: 1px; background: rgba(181,154,85,.3);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+.descargas a {
+  display: flex; flex-direction: column; gap: .3rem;
+  padding: 1.1rem 1.3rem; background: var(--marfil-2);
+  font-size: .95rem; color: var(--texto); text-decoration: none;
+  transition: background .25s ease, color .25s ease;
+}
+.descargas a::before {
+  content: ''; width: 20px; height: 20px; margin-bottom: .35rem;
+  background: currentColor; opacity: .75;
+  -webkit-mask: var(--icono-pdf) center/contain no-repeat;
+          mask: var(--icono-pdf) center/contain no-repeat;
+}
+.descargas a small {
+  font-size: .66rem; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.descargas a:hover,
+.descargas a:focus-visible { background: var(--oliva); color: var(--marfil-2); }
+.descargas a:hover small,
+.descargas a:focus-visible small { color: rgba(250,245,236,.8); }
 
 /* ---------------------------------------- 11 bis. PESTANAS DE CARTA */
 .carta-pestanas {
