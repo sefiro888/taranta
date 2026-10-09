@@ -470,6 +470,33 @@ p:last-child { margin-bottom: 0; }
 .dato span { font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--texto-suave); }
 .fondo-carbon .dato span, .fondo-madera .dato span { color: var(--texto-inv-s); }
 
+/* Galardones del chef. Mismo lenguaje que .dato: la cifra en display,
+   el texto en versalitas. Se habian quedado sin estilo. */
+.galardones {
+  display: grid; gap: clamp(1.4rem, 3vw, 2.4rem);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.galardon { border-top: var(--linea); padding-top: 1.1rem; }
+.galardon b {
+  display: block; font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.9rem, 1.3rem + 2vw, 2.8rem); line-height: 1;
+  color: var(--oliva); margin-bottom: .55rem;
+}
+.galardon span {
+  display: block; font-size: .76rem; letter-spacing: .14em;
+  text-transform: uppercase; line-height: 1.55; color: var(--texto-suave);
+}
+.fondo-carbon .galardon b, .fondo-madera .galardon b { color: var(--dorado-claro); }
+.fondo-carbon .galardon span, .fondo-madera .galardon span { color: var(--texto-inv-s); }
+
+/* Variante para cuando el dato lleva una frase y no una etiqueta corta:
+   las versalitas del span serian ilegibles en un texto largo. */
+.datos--texto { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.datos--texto .dato p { margin: .7rem 0 0; font-size: .92rem; line-height: 1.6; color: var(--texto-suave); }
+.datos--texto .dato p b { font-weight: 500; color: var(--texto); }
+.fondo-carbon .datos--texto .dato p { color: var(--texto-inv-s); }
+.fondo-carbon .datos--texto .dato p b { color: var(--texto-inv); }
+
 /* ------------------------------------------------------------ 9. TARJETAS */
 .tarjeta {
   position: relative; display: flex; flex-direction: column;
