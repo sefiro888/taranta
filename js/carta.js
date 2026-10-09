@@ -191,6 +191,7 @@
         '<p class="kicker" data-ficha-cat></p>' +
         '<h3 data-ficha-nombre></h3>' +
         '<p class="lead" data-ficha-desc></p>' +
+        '<p class="apunte" data-ficha-apunte hidden></p>' +
         '<p class="ficha-plato__precio" data-ficha-precio></p>' +
         '<div class="ficha-plato__etiquetas" data-ficha-etiquetas></div>' +
         '<div class="acciones" style="margin-top:1.6rem">' +
@@ -214,6 +215,9 @@
     ficha.querySelector('[data-ficha-cat]').textContent = cat ? cat.nombre : '';
     ficha.querySelector('[data-ficha-nombre]').textContent = p.nombre;
     ficha.querySelector('[data-ficha-desc]').textContent = p.desc || '';
+    var ap = ficha.querySelector('[data-ficha-apunte]');
+    ap.textContent = p.apunte || '';
+    ap.hidden = !p.apunte;
     ficha.querySelector('[data-ficha-precio]').innerHTML =
       p.precioMedia ? euros(p.precio) + ' <small>ración entera</small> · ' + euros(p.precioMedia) + ' <small>media</small>'
                     : euros(p.precio) + (p.unidad ? ' <small>por ' + p.unidad + '</small>' : '');

@@ -98,6 +98,7 @@ window.MENU_DATA = {
       alt: 'Ración de calamares a la andaluza' },
     { id: 'n8', cat: 'raciones', nombre: 'Cazón en adobo con ali oli cítrico',
       desc: 'El adobo gaditano de toda la vida.', precio: 19.50, precioMedia: 11.00,
+      apunte: 'En Cádiz lo llaman bienmesabe: el cazón se deja macerar en vinagre, comino, orégano, pimentón y ajo antes de pasar por la harina.',
       img: 'assets/images/cazon-adobo.jpg',
       alt: 'Cazón en adobo recién frito, servido en bandeja con brotes' },
     { id: 'n9', cat: 'raciones', nombre: 'Fritos de bacalao sobre pisto dulce',
@@ -170,7 +171,8 @@ window.MENU_DATA = {
       img: 'assets/images/plato-arroz-negro.jpg',
       alt: 'Arroz negro de gamba roja con vieira a la brasa' },
 
-    { id: 'p1', cat: 'lonja', nombre: 'Lubina', desc: 'Ajoatao y caldo de jamón ibérico.', precio: 28.00 },
+    { id: 'p1', cat: 'lonja', nombre: 'Lubina', desc: 'Ajoatao y caldo de jamón ibérico.', precio: 28.00,
+      apunte: 'El ajoatao es el ajo majado con patata y aceite que se come en el interior de Málaga y Granada. Aquí hace de cama del pescado.' },
     { id: 'p2', cat: 'lonja', nombre: 'Lomo de atún rojo', desc: 'Verduras en tempura y crema de pimientos asados.', precio: 32.00 },
     { id: 'p3', cat: 'lonja', nombre: 'Corvina soasada', desc: 'Crema de lombarda, langostinos de Sanlúcar y alga codium.', precio: 30.00 },
     { id: 'p4', cat: 'lonja', nombre: 'Rodaballo a la brasa', desc: 'Crema de azafrán, almendra, sidra, espárragos verdes y almejas.', precio: 34.00, destacado: true,
@@ -181,8 +183,11 @@ window.MENU_DATA = {
     { id: 'm2', cat: 'carnes', nombre: 'Paletilla de lechazo a baja temperatura',
       desc: 'Patatas al ajillo, piñones tostados y glaseado de su jugo.', precio: 36.00 },
     { id: 'm3', cat: 'carnes', nombre: 'Abanico ibérico D.O. Jabugo a la brasa',
-      desc: 'Salsa teriyaki y patata chafada con A.O.V.E.', precio: 28.00 },
+      desc: 'Salsa teriyaki y papa chafá con A.O.V.E.', precio: 29.00,
+      apunte: 'El abanico es la tira de carne que recorre las costillas del cerdo ibérico. Poca, y de las piezas que mejor aguantan la brasa.',
+      nota: 'Precio por confirmar: su carta en PDF marca 28,00 € y su web 29,00 €.' },
     { id: 'm4', cat: 'carnes', nombre: 'Carrillada de ternera estofada al oloroso',
+      apunte: 'El rinrán es de Cazorla, en la sierra de Jaén: pimiento seco, tomate y patata majados juntos. Cocina de aceituneros.',
       desc: 'Sobre crema de patata y A.O.V.E.', precio: 28.00 },
     { id: 'm5', cat: 'carnes', nombre: 'Chuletón de vaca clandestina', desc: 'Con papas y padrón.',
       precio: 55.00, unidad: 'kg', destacado: true },
@@ -221,6 +226,7 @@ window.PROVINCIAS = [
     titular: 'De chirigotas por Cádiz',
     texto: 'La bahía en un bocado crujiente, con un punto cítrico que despierta.',
     pase: 'Tortita de camarones crujiente y mahonesa de lima.',
+    apunte: 'La tortillita de camarones nace en la bahía de Cádiz, en San Fernando y Chiclana: harina de garbanzo, camarón vivo y aceite muy caliente.',
     alergenos: ['gluten', 'marisco', 'lácteos'] },
   { id: 'cordoba', nombre: 'Córdoba', orden: 5,
     titular: 'Córdoba la llana',
@@ -247,6 +253,7 @@ window.PROVINCIAS = [
 window.HOMENAJE = {
   nombre: 'Homenaje a la abuela Micaela',
   pase: 'Helado de A.O.V.E., pestiños y espuma de leche merengada.',
+  apunte: 'El pestiño es masa frita con ajonjolí y anís, bañada en miel. Dulce de casa, de Navidad y de Semana Santa en toda Andalucía.',
   texto: 'El último pase no pertenece a ninguna provincia: es el homenaje del chef a su abuela. Cierra el viaje donde empiezan todas las cocinas del sur.',
   alergenos: ['gluten', 'huevo', 'lácteos']
 };

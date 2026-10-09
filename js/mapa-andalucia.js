@@ -108,6 +108,10 @@
 
   /* Los alergenos vienen de las cartas oficiales del restaurante. Si un pase
      no los trae declarados, no se inventa nada: simplemente no se muestran. */
+  function apunte(p) {
+    return p && p.apunte ? '<p class="apunte">' + p.apunte + '</p>' : '';
+  }
+
   function alergenos(p) {
     if (!p || !p.alergenos || !p.alergenos.length) return '';
     return '<p class="alergenos"><b>Alérgenos</b> ' + p.alergenos.join(' · ') + '</p>';
@@ -128,7 +132,7 @@
       '<span class="mapa-panel__orden">Pase ' + (indice + 1) + ' de ' + datos.length + '</span>' +
       '<h3>' + prov.nombre + '</h3>' +
       '<p class="mapa-panel__titular">' + prov.titular + '</p>' +
-      '<p class="mapa-panel__texto">' + prov.texto + '</p>' +
+      '<p class="mapa-panel__texto">' + prov.texto + '</p>' + apunte(prov) +
       '<div class="mapa-panel__pase"><b>El pase</b><p>' + prov.pase + '</p>' + alergenos(prov) + '</div>' +
       '<div class="mapa-panel__nav">' +
         '<button type="button" data-mapa-ant>Anterior</button>' +
@@ -209,7 +213,7 @@
           '<p class="pase__provincia">' + p.nombre + ' &middot; ' + p.titular + '</p>' +
           '<h3>' + p.pase + '</h3>' +
           '<p class="pase__desc">' + p.texto + '</p>' +
-          alergenos(p) +
+          apunte(p) + alergenos(p) +
           (p.img ? '<div class="pase__foto"><div class="marco marco--ancho marco--filete"><img src="' + p.img + '" alt="' + (p.alt || p.nombre) + '" loading="lazy"></div></div>' : '') +
         '</div>' +
       '</article>';
@@ -221,7 +225,7 @@
           '<p class="pase__provincia">' + window.HOMENAJE.nombre + '</p>' +
           '<h3>' + window.HOMENAJE.pase + '</h3>' +
           '<p class="pase__desc">' + window.HOMENAJE.texto + '</p>' +
-          alergenos(window.HOMENAJE) +
+          apunte(window.HOMENAJE) + alergenos(window.HOMENAJE) +
         '</div>' +
       '</article>';
     }

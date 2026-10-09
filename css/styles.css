@@ -900,6 +900,18 @@ button.plato__foto:hover img { transform: scale(1.07); }
 .pase__foto { margin-top: 1.2rem; max-width: 420px; }
 .pase--homenaje { border-top-width: 2px; border-top-color: var(--terracota); }
 
+/* Apunte: lo que no cabe en una carta impresa. Explica el termino andaluz
+   o de donde viene el plato. Es voz de la casa, no de la carta, y por eso
+   va con filete lateral y en cuerpo menor. */
+.apunte {
+  margin: 1.1rem 0 0; padding: .1rem 0 .1rem 1rem;
+  border-left: 2px solid var(--dorado);
+  font-size: .88rem; line-height: 1.65; color: var(--texto-suave);
+}
+.fondo-carbon .apunte,
+.mapa-panel__texto + .apunte { color: var(--texto-inv-s); }
+.pase .apunte { max-width: 56ch; }
+
 /* Alergenos: obligatorios por normativa, pero no deben competir con el plato.
    Van en cuerpo pequeno, con la etiqueta en versalitas y el listado en cursiva. */
 .alergenos {
