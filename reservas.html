@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="assets/images/salon-arcos-flores.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=88e4e4f6">
+<link rel="stylesheet" href="css/styles.css?v=c0c9c1d4">
 <link rel="stylesheet" href="css/responsive.css?v=c415f764">
 </head>
 <body>
@@ -113,15 +113,21 @@
         </div>
 
         <div class="widget-reserva">
-          <div class="widget-reserva__cargando" data-widget-cargando>
+          <div class="widget-reserva__cargando" data-widget-cargando data-cookie-espera>
             <img src="assets/logo/isotipo-oliva.png" width="945" height="262" alt="">
             <p>Cargando el sistema de reservas…</p>
           </div>
-          <iframe
-            src="https://app.tableo.com/widget/la-taranta-spain?bgColor=%23FAF5EC&textColor=%23241F18&googleFont=Jost&fontSize=15.2&cornerStyle=rounded&textAlignment=center&formControlBgColor=%23D8C7A6&formControlColor=%23241F18&formControlBorderColor=%23B59A55&formControlBorderShadow=0&formControlBorderWidth=1&formControlBorderOpacity=1&buttonBgColor=%237E7824&buttonTextColor=%23FAF5EC"
-            title="Reserva de mesa en La Taranta"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div data-cookie-src="https://app.tableo.com/widget/la-taranta-spain?bgColor=%23FAF5EC&textColor=%23241F18&googleFont=Jost&fontSize=15.2&cornerStyle=rounded&textAlignment=center&formControlBgColor=%23D8C7A6&formControlColor=%23241F18&formControlBorderColor=%23B59A55&formControlBorderShadow=0&formControlBorderWidth=1&formControlBorderOpacity=1&buttonBgColor=%237E7824&buttonTextColor=%23FAF5EC"
+               data-cookie-titulo="Reserva de mesa en La Taranta">
+            <div class="hueco-tercero" data-cookie-aviso hidden>
+              <p><b>El sistema de reservas no se carga</b> porque no ha aceptado las cookies de Tableo, que es quien gestiona las reservas de La Taranta.</p>
+              <p>Puede reservar igualmente por teléfono o por WhatsApp.</p>
+              <p>
+                <a class="boton" href="tel:+34984265252">984 26 52 52</a>
+                <button type="button" class="enlace-fino" data-cookies-cambiar>Cambiar mi decisión</button>
+              </p>
+            </div>
+          </div>
         </div>
 
         <p class="widget-reserva__aviso">
@@ -193,7 +199,7 @@
           <a class="boton boton--fantasma" href="eventos.html">Ver eventos y grupos</a>
         </div>
         <div class="aviso-demo" style="margin-top:1.6rem">
-          Demostración: este formulario de consulta valida los datos y prepara el mensaje, pero todavía no envía nada a un servidor. La reserva de mesa de arriba sí es el sistema real del restaurante.
+          Este formulario de consulta no envía nada por correo: prepara el mensaje para que lo remita por WhatsApp. La reserva de mesa de arriba sí es el sistema real del restaurante.
         </div>
       </div>
 
@@ -280,7 +286,7 @@
 
         <div class="form-exito" data-form-exito>
           <h3 style="margin-bottom:.4rem">Solicitud preparada</h3>
-          <p>Esta demostración no envía todavía los datos a ningún servidor: al conectarla, la solicitud llegará al correo del restaurante. Mientras tanto, puede enviarnos la misma información por WhatsApp con un solo toque.</p>
+          <p>Su solicitud está lista. Envíenosla por WhatsApp con un solo toque, o llámenos y se la tomamos por teléfono.</p>
           <div class="acciones" style="margin-top:1rem">
             <a class="boton boton--wa" data-wa href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
             <a class="boton boton--fantasma" href="tel:+34984265252">Llamar al 984 26 52 52</a>
@@ -294,7 +300,20 @@
 
 <section class="seccion seccion--compacta fondo-marfil">
   <div class="contenedor">
-    <iframe class="mapa-google" title="Mapa de situación de La Taranta, calle Rosal 22, Oviedo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Calle%20Rosal%2022%2C%2033009%20Oviedo&output=embed"></iframe>
+    <div class="mapa-google mapa-google--hueco"
+     data-cookie-src="https://www.google.com/maps?q=Calle%20Rosal%2022%2C%2033009%20Oviedo&output=embed"
+     data-cookie-titulo="Mapa de situación de La Taranta, calle Rosal 22, Oviedo"
+     data-cookie-clase="mapa-google">
+  <p class="hueco-tercero" data-cookie-espera>Cargando el mapa…</p>
+  <div class="hueco-tercero" data-cookie-aviso hidden>
+    <p><b>El mapa no se carga</b> porque no ha aceptado las cookies de Google.</p>
+    <p>Calle Rosal, 22-24 · 33009 Oviedo</p>
+    <p>
+      <a class="boton boton--fantasma" href="https://maps.google.com/?q=Calle+Rosal+22,+33009+Oviedo" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      <button type="button" class="enlace-fino" data-cookies-cambiar>Cambiar mi decisión</button>
+    </p>
+  </div>
+</div>
   </div>
 </section>
 </main>
@@ -336,7 +355,8 @@
           <li><a href="chef.html">El chef</a></li>
           <li><a href="contacto.html">Contacto y horarios</a></li>
           <li><a href="reservas.html">Reservas</a></li>
-          <li><a href="politica-privacidad.html">Privacidad y créditos</a></li>
+          <li><a href="politica-privacidad.html">Aviso legal y privacidad</a></li>
+          <li><a href="politica-privacidad.html#cookies" data-cookies-cambiar>Cookies</a></li>
         </ul>
       </div>
 
@@ -353,7 +373,7 @@
 
     <div class="pie__legal">
       <p>© <span data-ano></span> La Taranta · Andalucía en el corazón de Asturias</p>
-      <p>Demostración de diseño web preparada para La Taranta. Contenido pendiente de validación por el restaurante.</p>
+      <p>GALIANDA, S.L. · NIF B-70950597 · Calle Rosal, 22-24 · 33009 Oviedo</p>
     </div>
   </div>
 </footer>
@@ -383,6 +403,7 @@
 </div>
 
 <script src="js/main.js?v=dbcbbed3"></script>
-<script src="js/reservas.js?v=e481965c"></script>
+<script src="js/cookies.js?v=49cb3958"></script>
+<script src="js/reservas.js?v=93b94f17"></script>
 </body>
 </html>

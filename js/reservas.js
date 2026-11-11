@@ -147,6 +147,7 @@
   /* ------------------ Widget de reservas (Tableo): ajuste de altura
      Si el widget comunica su altura por postMessage, el marco se adapta.
      Si no lo hace, se queda con la altura definida en el CSS.             */
+  function montarWidget() {
   var marcoReserva = document.querySelector('.widget-reserva iframe');
   if (marcoReserva) {
     /* Aviso de carga mientras el sistema de reservas se descarga */
@@ -188,6 +189,12 @@
       }, { threshold: niveles }).observe(caja);
     }
   }
+  }
+
+  /* El iframe de Tableo no existe hasta que se aceptan las cookies, asi que
+     se monta tambien cuando cookies.js avisa de que ya lo ha insertado. */
+  montarWidget();
+  document.addEventListener('lt:terceros-cargados', montarWidget);
 
   /* ----------------- Fecha minima = hoy en los selectores de fecha */
   var hoy = new Date();

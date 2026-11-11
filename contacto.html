@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="assets/images/fachada.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=88e4e4f6">
+<link rel="stylesheet" href="css/styles.css?v=c0c9c1d4">
 <link rel="stylesheet" href="css/responsive.css?v=c415f764">
 </head>
 <body>
@@ -150,7 +150,20 @@
         <p class="pie-foto" style="margin-top:1rem">Aparcamientos y líneas concretas: información pendiente de confirmar con La Taranta.</p>
       </div>
       <div class="reveal" data-delay="1">
-        <iframe class="mapa-google" title="Mapa de situación de La Taranta, calle Rosal 22, Oviedo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Calle%20Rosal%2022%2C%2033009%20Oviedo&output=embed"></iframe>
+        <div class="mapa-google mapa-google--hueco"
+     data-cookie-src="https://www.google.com/maps?q=Calle%20Rosal%2022%2C%2033009%20Oviedo&output=embed"
+     data-cookie-titulo="Mapa de situación de La Taranta, calle Rosal 22, Oviedo"
+     data-cookie-clase="mapa-google">
+  <p class="hueco-tercero" data-cookie-espera>Cargando el mapa…</p>
+  <div class="hueco-tercero" data-cookie-aviso hidden>
+    <p><b>El mapa no se carga</b> porque no ha aceptado las cookies de Google.</p>
+    <p>Calle Rosal, 22-24 · 33009 Oviedo</p>
+    <p>
+      <a class="boton boton--fantasma" href="https://maps.google.com/?q=Calle+Rosal+22,+33009+Oviedo" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      <button type="button" class="enlace-fino" data-cookies-cambiar>Cambiar mi decisión</button>
+    </p>
+  </div>
+</div>
       </div>
     </div>
   </div>
@@ -164,7 +177,7 @@
         <h2>¿Tiene alguna duda?</h2>
         <p>Para reservas, lo más rápido es el teléfono o el WhatsApp. Para el resto de consultas —eventos, prensa, proveedores— puede usar este formulario.</p>
         <div class="aviso-demo" style="margin-top:1.6rem">
-          Demostración: el formulario valida los datos y prepara el mensaje, pero todavía no envía nada a un servidor.
+          Este formulario no envía la consulta por correo: prepara el mensaje para que lo remita por WhatsApp con un toque. Para reservar mesa, use el sistema de reservas o llame al restaurante.
         </div>
 
         <h3 style="margin-top:2.4rem">Preguntas frecuentes</h3>
@@ -187,7 +200,7 @@
           </details>
           <details>
             <summary>¿Tienen opciones para alergias e intolerancias?</summary>
-            <p>Indíquelo al reservar y coméntelo con la sala al llegar: le informarán de los alérgenos de cada elaboración. Esta demostración no incluye la tabla de alérgenos.</p>
+            <p>Indíquelo al reservar y coméntelo con la sala al llegar: le informarán de los alérgenos de cada elaboración. El menú degustación lleva los alérgenos indicados pase a pase en esta web.</p>
           </details>
         </div>
       </div>
@@ -245,7 +258,7 @@
 
         <div class="form-exito" data-form-exito>
           <h3 style="margin-bottom:.4rem">Solicitud preparada</h3>
-          <p>Esta demostración no envía todavía los datos a ningún servidor: al conectarla, la solicitud llegará al correo del restaurante. Mientras tanto, puede enviarnos la misma información por WhatsApp con un solo toque.</p>
+          <p>Su solicitud está lista. Envíenosla por WhatsApp con un solo toque, o llámenos y se la tomamos por teléfono.</p>
           <div class="acciones" style="margin-top:1rem">
             <a class="boton boton--wa" data-wa href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
             <a class="boton boton--fantasma" href="tel:+34984265252">Llamar al 984 26 52 52</a>
@@ -309,7 +322,8 @@
           <li><a href="chef.html">El chef</a></li>
           <li><a href="contacto.html">Contacto y horarios</a></li>
           <li><a href="reservas.html">Reservas</a></li>
-          <li><a href="politica-privacidad.html">Privacidad y créditos</a></li>
+          <li><a href="politica-privacidad.html">Aviso legal y privacidad</a></li>
+          <li><a href="politica-privacidad.html#cookies" data-cookies-cambiar>Cookies</a></li>
         </ul>
       </div>
 
@@ -326,7 +340,7 @@
 
     <div class="pie__legal">
       <p>© <span data-ano></span> La Taranta · Andalucía en el corazón de Asturias</p>
-      <p>Demostración de diseño web preparada para La Taranta. Contenido pendiente de validación por el restaurante.</p>
+      <p>GALIANDA, S.L. · NIF B-70950597 · Calle Rosal, 22-24 · 33009 Oviedo</p>
     </div>
   </div>
 </footer>
@@ -356,6 +370,7 @@
 </div>
 
 <script src="js/main.js?v=dbcbbed3"></script>
-<script src="js/reservas.js?v=e481965c"></script>
+<script src="js/cookies.js?v=49cb3958"></script>
+<script src="js/reservas.js?v=93b94f17"></script>
 </body>
 </html>

@@ -227,11 +227,13 @@ p:last-child { margin-bottom: 0; }
 .boton--fantasma:hover { --b-bg: var(--carbon); --b-fg: var(--marfil); --b-bd: var(--carbon); }
 
 .fondo-carbon .boton--fantasma, .fondo-madera .boton--fantasma,
-.fondo-granate .boton--fantasma, .hero .boton--fantasma, .lightbox .boton--fantasma {
+.fondo-granate .boton--fantasma, .hero .boton--fantasma, .lightbox .boton--fantasma,
+.cookies .boton--fantasma {
   --b-fg: var(--marfil); --b-bd: rgba(216,199,166,.42);
 }
 .fondo-carbon .boton--fantasma:hover, .fondo-madera .boton--fantasma:hover,
-.fondo-granate .boton--fantasma:hover, .hero .boton--fantasma:hover {
+.fondo-granate .boton--fantasma:hover, .hero .boton--fantasma:hover,
+.cookies .boton--fantasma:hover {
   --b-bg: var(--marfil); --b-fg: var(--carbon); --b-bd: var(--marfil);
 }
 
@@ -1425,4 +1427,133 @@ body { animation: entradaPagina 420ms ease both; }
 @media (prefers-reduced-motion: reduce) {
   .video__icono { transition: none; }
   .video__play:hover .video__icono { transform: translate(-50%, -50%); }
+}
+
+/* ======================================================================
+   CONSENTIMIENTO DE COOKIES
+   El cartel y el hueco que queda cuando el visitante no acepta.
+   ====================================================================== */
+.cookies {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 900;
+  padding: clamp(.9rem, 2vw, 1.3rem);
+  background: var(--carbon);
+  border-top: 1px solid rgba(181,154,85,.42);
+  box-shadow: 0 -18px 46px -28px rgba(0,0,0,.9);
+  transform: translateY(102%);
+  transition: transform var(--trans);
+}
+.cookies.es-visible { transform: none; }
+.cookies__int {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.8rem;
+  max-width: var(--ancho);
+  margin-inline: auto;
+}
+.cookies__texto { flex: 1 1 26rem; color: var(--texto-inv-s); }
+.cookies__texto p { margin: 0; font-size: .92rem; line-height: 1.55; }
+.cookies__texto b { color: var(--texto-inv); font-weight: 500; }
+.cookies__texto a { color: var(--dorado-claro); }
+.cookies__titulo {
+  margin-bottom: .3rem !important;
+  font-family: var(--display);
+  font-size: 1.22rem !important;
+  color: var(--texto-inv);
+}
+.cookies__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+.cookies__botones .boton { white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .cookies__botones { width: 100%; }
+  .cookies__botones .boton { flex: 1 1 auto; justify-content: center; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cookies { transition: none; }
+}
+
+/* El hueco de un tercero que no se ha cargado */
+.hueco-tercero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  min-height: 16rem;
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  text-align: center;
+  color: var(--texto-suave);
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(126,120,36,.05) 0 10px, transparent 10px 20px),
+    var(--marfil-2);
+  border: 1px dashed rgba(126,120,36,.35);
+  border-radius: var(--radio);
+}
+.hueco-tercero p { margin: 0; max-width: 46ch; font-size: .95rem; line-height: 1.55; }
+.hueco-tercero b { color: var(--texto); }
+.hueco-tercero .boton { margin-top: .3rem; }
+.hueco-tercero .enlace-fino {
+  margin-left: .9rem;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+}
+.mapa-google--hueco { display: block; height: auto; min-height: 16rem; border: 0; }
+.mapa-google--hueco.es-cargado { min-height: 0; }
+
+/* Tabla de cookies de la pagina legal */
+.tabla-cookies {
+  width: 100%;
+  margin: 1.4rem 0 1.8rem;
+  border-collapse: collapse;
+  font-size: .94rem;
+}
+.tabla-cookies th,
+.tabla-cookies td {
+  padding: .7rem .9rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(126,120,36,.22);
+}
+.tabla-cookies thead th {
+  font-family: var(--texto-ff);
+  font-weight: 500;
+  font-size: .76rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--oliva-osc);
+  border-bottom-width: 2px;
+}
+.tabla-cookies tbody tr:last-child th,
+.tabla-cookies tbody tr:last-child td { border-bottom: 0; }
+
+@media (max-width: 640px) {
+  .tabla-cookies, .tabla-cookies tbody, .tabla-cookies tr, .tabla-cookies td { display: block; }
+  .tabla-cookies thead { display: none; }
+  .tabla-cookies tr {
+    margin-bottom: 1rem;
+    padding-bottom: .6rem;
+    border-bottom: 1px solid rgba(126,120,36,.22);
+  }
+  .tabla-cookies td { padding: .22rem 0; border: 0; }
+  .tabla-cookies td:first-child { font-size: 1.05rem; }
+}
+
+/* Un dato que todavia no nos han facilitado */
+.pendiente {
+  padding: .1em .5em;
+  border: 1px dashed rgba(166,79,50,.5);
+  border-radius: 2px;
+  color: var(--terracota);
+  font-size: .88em;
+  font-style: italic;
 }
