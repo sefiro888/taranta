@@ -1320,3 +1320,109 @@ body { animation: entradaPagina 420ms ease both; }
   .plato { break-inside: avoid; }
   a[href^="http"]::after { content: ''; }
 }
+
+/* ======================================================================
+   VIDEO CON FACHADA
+   La portada es una foto nuestra. El reproductor de YouTube no se carga
+   hasta que se pulsa, asi que no deja cookies por el camino.
+   ====================================================================== */
+.video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  background: var(--carbon);
+}
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video__portada {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .5rem;
+  width: 100%;
+  padding: 1.5rem 1.5rem clamp(1.4rem, 3vw, 2.1rem);
+  border: 0;
+  cursor: pointer;
+  color: var(--texto-inv);
+  font-family: var(--texto-ff);
+  background: linear-gradient(to bottom,
+              rgba(23,21,17,.18) 0%,
+              rgba(23,21,17,.42) 42%,
+              rgba(23,21,17,.74) 72%,
+              rgba(23,21,17,.9) 100%);
+  transition: background var(--trans-rapida);
+}
+.video__play:hover,
+.video__play:focus-visible {
+  background: linear-gradient(to bottom,
+              rgba(23,21,17,.3) 0%,
+              rgba(23,21,17,.54) 42%,
+              rgba(23,21,17,.82) 72%,
+              rgba(23,21,17,.94) 100%);
+}
+.video__icono {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: clamp(62px, 8vw, 84px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(216,192,137,.55);
+  border-radius: 50%;
+  background: rgba(23,21,17,.42);
+  transition: transform var(--trans-rapida), background var(--trans-rapida),
+              border-color var(--trans-rapida);
+}
+.video__icono svg {
+  width: 38%;
+  margin-left: 8%;          /* el triangulo pesa a la izquierda */
+  fill: var(--dorado-claro);
+}
+.video__play:hover .video__icono,
+.video__play:focus-visible .video__icono {
+  transform: translate(-50%, -50%) scale(1.07);
+  background: rgba(23,21,17,.62);
+  border-color: var(--dorado-claro);
+}
+.video__rotulo {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 1.1rem + .9vw, 1.9rem);
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 2px 18px rgba(23,21,17,.6);
+}
+.video__aviso {
+  max-width: 46ch;
+  font-size: .82rem;
+  line-height: 1.45;
+  text-align: center;
+  color: rgba(237,227,212,.92);
+  text-shadow: 0 1px 10px rgba(23,21,17,.9);
+}
+.video.es-reproduciendo { box-shadow: var(--sombra); }
+
+@media (prefers-reduced-motion: reduce) {
+  .video__icono { transition: none; }
+  .video__play:hover .video__icono { transform: translate(-50%, -50%); }
+}
