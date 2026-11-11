@@ -122,9 +122,13 @@
 @media (max-width: 520px) {
   :root { --gutter: 1.15rem; }
 
-  .plato { grid-template-columns: 1fr auto; gap: .35rem .9rem; padding: 1.2rem 0; }
+  .plato { grid-template-columns: 1fr auto; gap: .45rem .9rem; padding: 1.3rem 0; }
   .plato--con-foto { grid-template-columns: 70px 1fr auto; }
-  .plato__foto { width: 70px; height: 70px; }
+  .plato__foto { grid-row: span 2; width: 70px; height: 70px; }
+  /* En pantalla estrecha el texto no cabe junto a la foto: vuelve a ocupar
+     todo el ancho, debajo de ella. */
+  .plato--con-foto .plato__desc,
+  .plato--con-foto .plato__etiquetas { grid-column: 1 / -1; }
   .plato__precio { font-size: 1.05rem; }
 
   .galeria { columns: 1; }

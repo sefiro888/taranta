@@ -24,8 +24,12 @@
 
   --texto:        #241F18;
   --texto-suave:  #5C5344;
+  --texto-medio:  #463E31;   /* para leer, no para etiquetas */
   --texto-inv:    #EDE3D4;
   --texto-inv-s:  #B7AB96;
+
+  /* Icono de documento, usado en las descargas de las cartas */
+  --icono-pdf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6m0 2 5 5h-5V4M8 13h8v1.5H8V13m0 3h8v1.5H8V16Z'/%3E%3C/svg%3E");
 
   /* Tipografia */
   --display: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
@@ -467,6 +471,33 @@ p:last-child { margin-bottom: 0; }
 .dato span { font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--texto-suave); }
 .fondo-carbon .dato span, .fondo-madera .dato span { color: var(--texto-inv-s); }
 
+/* Galardones del chef. Mismo lenguaje que .dato: la cifra en display,
+   el texto en versalitas. Se habian quedado sin estilo. */
+.galardones {
+  display: grid; gap: clamp(1.4rem, 3vw, 2.4rem);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.galardon { border-top: var(--linea); padding-top: 1.1rem; }
+.galardon b {
+  display: block; font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.9rem, 1.3rem + 2vw, 2.8rem); line-height: 1;
+  color: var(--oliva); margin-bottom: .55rem;
+}
+.galardon span {
+  display: block; font-size: .76rem; letter-spacing: .14em;
+  text-transform: uppercase; line-height: 1.55; color: var(--texto-suave);
+}
+.fondo-carbon .galardon b, .fondo-madera .galardon b { color: var(--dorado-claro); }
+.fondo-carbon .galardon span, .fondo-madera .galardon span { color: var(--texto-inv-s); }
+
+/* Variante para cuando el dato lleva una frase y no una etiqueta corta:
+   las versalitas del span serian ilegibles en un texto largo. */
+.datos--texto { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.datos--texto .dato p { margin: .7rem 0 0; font-size: .92rem; line-height: 1.6; color: var(--texto-suave); }
+.datos--texto .dato p b { font-weight: 500; color: var(--texto); }
+.fondo-carbon .datos--texto .dato p { color: var(--texto-inv-s); }
+.fondo-carbon .datos--texto .dato p b { color: var(--texto-inv); }
+
 /* ------------------------------------------------------------ 9. TARJETAS */
 .tarjeta {
   position: relative; display: flex; flex-direction: column;
@@ -684,10 +715,13 @@ p:last-child { margin-bottom: 0; }
 .platos { display: grid; gap: 0; }
 .plato {
   display: grid; grid-template-columns: 1fr auto; gap: .6rem 1.6rem;
-  padding: 1.5rem 0; border-bottom: var(--linea-osc); align-items: baseline;
+  padding: 1.6rem 0; border-bottom: var(--linea-osc); align-items: start;
 }
 .plato__nombre { font-family: var(--display); font-size: clamp(1.18rem, 1.05rem + .5vw, 1.45rem); line-height: 1.25; margin: 0; }
-.plato__desc { grid-column: 1 / -1; color: var(--texto-suave); font-size: .95rem; margin: 0; max-width: 62ch; }
+.plato__desc {
+  grid-column: 1 / -1; margin: 0; max-width: 62ch;
+  color: var(--texto-medio); font-size: clamp(1rem, .96rem + .2vw, 1.1rem); line-height: 1.6;
+}
 .plato__precio {
   font-family: var(--display); font-size: clamp(1.15rem, 1rem + .5vw, 1.4rem);
   color: var(--oliva); white-space: nowrap;
@@ -701,8 +735,15 @@ p:last-child { margin-bottom: 0; }
 }
 .etiqueta--destacado { border-color: var(--terracota); color: var(--terracota); }
 .etiqueta--aviso { border-color: rgba(166,79,50,.5); color: var(--terracota); background: rgba(166,79,50,.06); }
-.plato--con-foto { grid-template-columns: 96px 1fr auto; }
-.plato__foto { grid-row: span 2; width: 96px; height: 96px; overflow: hidden; }
+.plato--con-foto { grid-template-columns: 110px 1fr auto; gap: .55rem 1.5rem; }
+/* La descripcion y las etiquetas arrancan bajo el nombre, no bajo la foto:
+   si empiezan en la columna 1 el bloque de texto queda descolgado. */
+.plato--con-foto .plato__desc,
+.plato--con-foto .plato__etiquetas { grid-column: 2 / -1; }
+.plato__foto {
+  grid-row: span 3; align-self: start; width: 110px; height: 110px;
+  overflow: hidden; border: 1px solid rgba(94,83,68,.18);
+}
 .plato__foto img { width: 100%; height: 100%; object-fit: cover; }
 .plato--oculto { display: none; }
 
@@ -713,6 +754,35 @@ p:last-child { margin-bottom: 0; }
   margin-top: 2.5rem; padding: 1.1rem 1.4rem; border-left: 2px solid var(--dorado);
   background: rgba(181,154,85,.09); font-size: .85rem; color: var(--texto-suave);
 }
+
+/* Las cartas en PDF, tal como las imprime el restaurante. Mucha gente
+   prefiere abrir la carta entera antes que navegar por secciones. */
+.descargas { margin-top: 1.8rem; }
+.descargas ul {
+  list-style: none; margin: .9rem 0 0; padding: 0;
+  display: grid; gap: 1px; background: rgba(181,154,85,.3);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+.descargas a {
+  display: flex; flex-direction: column; gap: .3rem;
+  padding: 1.1rem 1.3rem; background: var(--marfil-2);
+  font-size: .95rem; color: var(--texto); text-decoration: none;
+  transition: background .25s ease, color .25s ease;
+}
+.descargas a::before {
+  content: ''; width: 20px; height: 20px; margin-bottom: .35rem;
+  background: currentColor; opacity: .75;
+  -webkit-mask: var(--icono-pdf) center/contain no-repeat;
+          mask: var(--icono-pdf) center/contain no-repeat;
+}
+.descargas a small {
+  font-size: .66rem; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.descargas a:hover,
+.descargas a:focus-visible { background: var(--oliva); color: var(--marfil-2); }
+.descargas a:hover small,
+.descargas a:focus-visible small { color: rgba(250,245,236,.8); }
 
 /* ---------------------------------------- 11 bis. PESTANAS DE CARTA */
 .carta-pestanas {
@@ -840,6 +910,53 @@ button.plato__foto:hover img { transform: scale(1.07); }
 .fondo-carbon .pase__desc { color: var(--texto-inv-s); }
 .pase__foto { margin-top: 1.2rem; max-width: 420px; }
 .pase--homenaje { border-top-width: 2px; border-top-color: var(--terracota); }
+
+/* Hueco reservado para una fotografia que el restaurante aun no ha
+   facilitado. Mejor un sitio marcado que una imagen prestada. */
+.hueco-foto {
+  display: grid; place-items: center; padding: clamp(2rem, 5vw, 3.5rem);
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(126,120,36,.05) 0 10px, transparent 10px 20px),
+    var(--marfil-2);
+  border: 1px dashed rgba(126,120,36,.45);
+}
+.hueco-foto__aviso { text-align: center; max-width: 30ch; }
+.hueco-foto__etiqueta {
+  display: inline-block; margin-bottom: .9rem;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--oliva); border: 1px solid rgba(126,120,36,.5);
+  border-radius: 999px; padding: .4rem .9rem;
+}
+.hueco-foto__aviso p { margin: 0; font-size: .88rem; line-height: 1.6; color: var(--texto-suave); }
+
+/* Apunte: lo que no cabe en una carta impresa. Explica el termino andaluz
+   o de donde viene el plato. Es voz de la casa, no de la carta, y por eso
+   va con filete lateral y en cuerpo menor. */
+.apunte {
+  margin: 1.1rem 0 0; padding: .1rem 0 .1rem 1rem;
+  border-left: 2px solid var(--dorado);
+  font-size: .88rem; line-height: 1.65; color: var(--texto-suave);
+}
+.fondo-carbon .apunte,
+.mapa-panel__texto + .apunte { color: var(--texto-inv-s); }
+.pase .apunte { max-width: 56ch; }
+
+/* Alergenos: obligatorios por normativa, pero no deben competir con el plato.
+   Van en cuerpo pequeno, con la etiqueta en versalitas y el listado en cursiva. */
+.alergenos {
+  margin: .9rem 0 0; font-size: .78rem; line-height: 1.5;
+  font-style: italic; color: var(--texto-suave);
+}
+.alergenos b {
+  font-style: normal; font-weight: 500;
+  font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--oliva); margin-right: .45rem;
+}
+.fondo-carbon .alergenos { color: var(--texto-inv-s); }
+.fondo-carbon .alergenos b,
+.mapa-panel__pase .alergenos b { color: var(--dorado); }
+.mapa-panel__pase .alergenos { color: rgba(236, 231, 216, .72); }
 
 /* ------------------------------------------- 12 bis. FICHA DEL MENU
    Datos de cabecera del menu degustacion. Los campos aun no confirmados
