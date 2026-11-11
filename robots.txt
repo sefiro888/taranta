@@ -1,0 +1,5 @@
+# La Taranta · Oviedo
+User-agent: *
+Allow: /
+
+Sitemap: https://latarantaoviedo.com/sitemap.xml
