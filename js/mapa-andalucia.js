@@ -35,6 +35,59 @@
 
   var grupos = {};
 
+  /* Version "con arte" (indice de provincias): el mismo mapa, con trama de
+     azulejo sobre cada provincia, la ruta del menu de Jaen a Almeria, los
+     pases numerados, los dos mares y una rosa de los vientos. El dibujo sigue
+     siendo el de GEO: solo se anade encima, no se duplica nada. */
+  var arte = contenedor.hasAttribute('data-mapa-arte');
+
+  function el(nombre, atributos, texto) {
+    var e = document.createElementNS(SVG_NS, nombre);
+    Object.keys(atributos || {}).forEach(function (k) {
+      if (atributos[k] !== null && atributos[k] !== undefined) e.setAttribute(k, atributos[k]);
+    });
+    if (texto) e.textContent = texto;
+    return e;
+  }
+
+  if (arte) {
+    svg.classList.add('mapa-svg--arte');
+    svg.setAttribute('viewBox', '-20 -10 1040 604');
+
+    /* Trama: estrella de ocho puntas, el motivo del azulejo nazari */
+    var defs = el('defs');
+    var pat = el('pattern', { id: 'mapa-trama', width: 44, height: 44, patternUnits: 'userSpaceOnUse' });
+    pat.appendChild(el('path', {
+      d: 'M22 3 L26 14 L37 10 L32 20 L41 22 L32 24 L37 34 L26 30 L22 41 L18 30 L7 34 L12 24 L3 22 L12 20 L7 10 L18 14 Z',
+      fill: 'none', stroke: '#B59A55', 'stroke-width': 1, 'stroke-linejoin': 'round'
+    }));
+    pat.appendChild(el('circle', { cx: 22, cy: 22, r: 2.2, fill: '#B59A55' }));
+    defs.appendChild(pat);
+    svg.appendChild(defs);
+
+    /* Los vecinos y los mares, apenas insinuados */
+    var rotulos = [
+      ['Océano Atlántico', 105, 470, -8], ['Mar Mediterráneo', 790, 520, 0],
+      ['Extremadura', 215, 62, 0], ['Castilla-La Mancha', 700, 26, 0], ['Murcia', 968, 128, 0],
+      ['Portugal', 0, 120, -90]
+    ];
+    rotulos.forEach(function (r) {
+      var t = el('text', {
+        x: r[1], y: r[2], 'text-anchor': 'middle',
+        'class': 'mapa-rotulo' + (/Océano|Mar /.test(r[0]) ? ' mapa-rotulo--mar' : ''),
+        transform: r[3] ? 'rotate(' + r[3] + ' ' + r[1] + ' ' + r[2] + ')' : null
+      }, r[0]);
+      svg.appendChild(t);
+    });
+
+    /* Rosa de los vientos */
+    var rosa = el('g', { 'class': 'mapa-rosa', transform: 'translate(940 540)', 'aria-hidden': 'true' });
+    rosa.appendChild(el('path', { d: 'M0 -34 L6 -6 L34 0 L6 6 L0 34 L-6 6 L-34 0 L-6 -6 Z' }));
+    rosa.appendChild(el('path', { d: 'M0 -22 L4 -4 L22 0 L4 4 L0 22 L-4 4 L-22 0 L-4 -4 Z', transform: 'rotate(45)' }));
+    rosa.appendChild(el('text', { x: 0, y: -42, 'text-anchor': 'middle' }, 'N'));
+    svg.appendChild(rosa);
+  }
+
   datos.forEach(function (prov, i) {
     var d = GEO.paths[prov.id];
     var c = GEO.cent[prov.id];
@@ -51,15 +104,23 @@
     path.setAttribute('aria-label', prov.nombre + ': ' + prov.pase);
     g.appendChild(path);
 
+    if (arte) g.appendChild(el('path', { d: d, 'class': 'provincia-trama' }));
+
     var marca = document.createElementNS(SVG_NS, 'g');
     marca.setAttribute('class', 'marcador');
 
     var circ = document.createElementNS(SVG_NS, 'circle');
-    circ.setAttribute('cx', c[0]); circ.setAttribute('cy', c[1]); circ.setAttribute('r', '5');
+    circ.setAttribute('cx', c[0]); circ.setAttribute('cy', c[1]); circ.setAttribute('r', arte ? '15' : '5');
     marca.appendChild(circ);
 
+    if (arte) {
+      marca.appendChild(el('text', {
+        x: c[0], y: c[1] + 5.5, 'text-anchor': 'middle', 'class': 'marcador__num'
+      }, String(i + 1)));
+    }
+
     var txt = document.createElementNS(SVG_NS, 'text');
-    txt.setAttribute('x', c[0]); txt.setAttribute('y', c[1] - 14);
+    txt.setAttribute('x', c[0]); txt.setAttribute('y', arte ? c[1] + 38 : c[1] - 14);
     txt.setAttribute('text-anchor', 'middle');
     txt.textContent = prov.nombre;
     marca.appendChild(txt);
@@ -78,6 +139,23 @@
       if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); mover(-1); }
     });
   });
+
+  /* La ruta del menu: de provincia a provincia, en el orden de los pases. Cada
+     tramo es una curva suave que arranca y termina fuera de los numeros. */
+  if (arte) {
+    var ruta = el('g', { 'class': 'mapa-ruta', 'aria-hidden': 'true' });
+    for (var k = 0; k < datos.length - 1; k++) {
+      var a = GEO.cent[datos[k].id], b = GEO.cent[datos[k + 1].id];
+      if (!a || !b) continue;
+      var dx = b[0] - a[0], dy = b[1] - a[1], largo = Math.sqrt(dx * dx + dy * dy);
+      var ux = dx / largo, uy = dy / largo, r = 22;
+      var x0 = a[0] + ux * r, y0 = a[1] + uy * r, x1 = b[0] - ux * r, y1 = b[1] - uy * r;
+      var cx = (x0 + x1) / 2 - uy * largo * 0.14, cy = (y0 + y1) / 2 + ux * largo * 0.14;
+      ruta.appendChild(el('path', { d: 'M' + x0.toFixed(1) + ' ' + y0.toFixed(1) + ' Q' +
+        cx.toFixed(1) + ' ' + cy.toFixed(1) + ' ' + x1.toFixed(1) + ' ' + y1.toFixed(1) }));
+    }
+    svg.appendChild(ruta);
+  }
 
   contenedor.appendChild(svg);
 
@@ -127,6 +205,14 @@
       ? '<a class="enlace-fino" href="menu-degustacion.html">Ver el menú completo</a>'
       : '<a class="enlace-fino" href="reservas.html">Reservar el menú degustación</a>';
 
+    /* El homenaje final no pertenece a ninguna provincia, asi que no tiene
+       pagina propia. Los ocho pases si: desde el mapa se puede seguir
+       leyendo sobre la provincia, no solo sobre el plato. */
+    var masInfo = prov.id
+      ? '<a class="enlace-fino" href="provincia-' + prov.id + '.html">Conocer ' +
+        prov.nombre + '</a>'
+      : '';
+
     panel.innerHTML =
       foto +
       '<span class="mapa-panel__orden">Pase ' + (indice + 1) + ' de ' + datos.length + '</span>' +
@@ -138,7 +224,7 @@
         '<button type="button" data-mapa-ant>Anterior</button>' +
         '<button type="button" data-mapa-sig>Siguiente</button>' +
       '</div>' +
-      '<div style="margin-top:1.2rem">' + cta + '</div>';
+      '<div class="mapa-panel__enlaces">' + masInfo + cta + '</div>';
 
     var ant = panel.querySelector('[data-mapa-ant]');
     var sig = panel.querySelector('[data-mapa-sig]');

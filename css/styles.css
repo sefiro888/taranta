@@ -347,7 +347,7 @@ p:last-child { margin-bottom: 0; }
 .menu-movil {
   position: fixed; inset: 0; z-index: 88;
   background: var(--carbon);
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column; justify-content: flex-start;
   padding: calc(var(--header-h) + .5rem) var(--gutter) 1.2rem;
   transform: translateY(-100%); visibility: hidden;
   transition: transform var(--trans), visibility var(--trans);
@@ -1556,4 +1556,526 @@ body { animation: entradaPagina 420ms ease both; }
   color: var(--terracota);
   font-size: .88em;
   font-style: italic;
+}
+
+/* ======================================================================
+   NAVEGACION CON GRUPOS
+   Con veinticuatro paginas el menu plano no cabe. Dos grupos se abren
+   en un panel. Se abre al pasar por encima Y al llegar con el teclado,
+   asi que funciona sin JavaScript; el script solo anade el cierre con
+   Escape y el toque en tactil.
+   ====================================================================== */
+.nav__grupo { position: relative; }
+
+.nav__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: .42rem;
+  padding: .45rem 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--texto-inv);
+  font-family: var(--texto-ff);
+  font-size: .715rem;
+  letter-spacing: .175em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: relative;
+  transition: color var(--trans-rapida);
+}
+.nav__boton::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  height: 1px; width: 0; background: var(--dorado);
+  transition: width var(--trans-rapida);
+}
+.nav__grupo:hover .nav__boton,
+.nav__boton:focus-visible,
+.nav__boton[aria-expanded="true"],
+.nav__boton[data-dentro="si"] { color: var(--dorado-claro); }
+.nav__grupo:hover .nav__boton::after,
+.nav__boton[aria-expanded="true"]::after,
+.nav__boton[data-dentro="si"]::after { width: 100%; }
+
+.nav__flecha {
+  width: 6px; height: 6px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--trans-rapida);
+}
+.nav__grupo:hover .nav__flecha,
+.nav__boton[aria-expanded="true"] .nav__flecha {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.nav__panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% 0;
+  min-width: 15rem;
+  margin-top: .85rem;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--carbon-2);
+  border: 1px solid rgba(181,154,85,.3);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--trans-rapida), transform var(--trans-rapida),
+              visibility var(--trans-rapida);
+  z-index: 60;
+}
+/* Puente invisible: evita que el panel se cierre al cruzar el hueco */
+.nav__panel::before {
+  content: ''; position: absolute; left: 0; right: 0; top: -.85rem; height: .85rem;
+}
+.nav__grupo:hover .nav__panel,
+.nav__grupo:focus-within .nav__panel,
+.nav__boton[aria-expanded="true"] + .nav__panel {
+  opacity: 1; visibility: visible; transform: none;
+}
+
+.nav__panel a {
+  padding: .62rem .85rem;
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--texto-inv-s);
+  white-space: nowrap;
+  border-radius: 2px;
+  transition: background var(--trans-rapida), color var(--trans-rapida);
+}
+.nav__panel a::after { display: none; }
+.nav__panel a:hover,
+.nav__panel a:focus-visible { background: rgba(181,154,85,.14); color: var(--dorado-claro); }
+.nav__panel a[aria-current="page"] { color: var(--dorado-claro); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__panel, .nav__flecha { transition: none; }
+}
+
+/* --------------------------------------------- El panel movil, agrupado */
+.menu-movil nav { gap: .9rem; }
+
+.menu-movil__titulo {
+  margin: 0 0 .2rem;
+  font-family: var(--texto-ff);
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--dorado);
+}
+.menu-movil__grupo { display: flex; flex-direction: column; gap: .1rem; }
+.menu-movil__grupo a {
+  font-size: clamp(1.02rem, 4vw, 1.35rem) !important;
+  padding-left: .2rem;
+}
+.menu-movil__suelto {
+  font-size: clamp(1.15rem, 4.6vw, 1.6rem) !important;
+  color: var(--dorado-claro) !important;
+}
+.menu-movil nav a[aria-current="page"] { color: var(--dorado-claro); }
+
+
+/* El menu movil se centra cuando sobra sitio, pero sin recortar por arriba
+   cuando no cabe: con justify-content:center el navegador corta el principio
+   y no se puede subir. Con margin automatico, se centra o se desplaza. */
+.menu-movil nav { margin-block: auto; }
+.menu-movil__grupo a { padding: .22rem 0; min-height: 36px; }
+
+/* El cartel de cookies esta por encima de todo; sobre el menu a pantalla
+   completa estorba. Se aparta mientras el menu esta abierto y vuelve al
+   cerrarlo, sin perder la decision pendiente. */
+body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
+
+
+
+/* ======================================================================
+   LAS OCHO PROVINCIAS
+   La silueta de cada provincia sale del mismo mapa interactivo, asi que
+   no hay dos dibujos que mantener.
+   ====================================================================== */
+
+/* --------------------------------------------------- Portada de provincia */
+.prov-hero {
+  position: relative;
+  padding: calc(var(--header-h) + clamp(3rem, 7vw, 6rem)) 0 clamp(3rem, 6vw, 5rem);
+  background: var(--carbon);
+  overflow: hidden;
+  isolation: isolate;
+}
+.prov-hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(90% 120% at 78% 40%, rgba(126,120,36,.18) 0%, transparent 62%),
+    var(--carbon);
+}
+.prov-hero__int {
+  display: grid;
+  grid-template-columns: 1fr minmax(16rem, 34%);
+  align-items: center;
+  gap: clamp(1.6rem, 4vw, 4rem);
+}
+.prov-hero__texto { color: var(--texto-inv); }
+.prov-hero__num {
+  margin: .9rem 0 .3rem;
+  font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--dorado);
+}
+.prov-hero h1 {
+  margin: 0;
+  font-size: clamp(3rem, 2rem + 6vw, 6.5rem);
+  line-height: .95;
+  color: var(--marfil);
+}
+.prov-hero__lema {
+  margin: .5rem 0 1.4rem;
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(1.15rem, 1rem + .7vw, 1.6rem);
+  color: var(--dorado-claro);
+}
+.prov-hero .lead { color: var(--texto-inv-s); max-width: 48ch; }
+
+.prov-hero__mapa { display: flex; justify-content: center; }
+.prov-silueta {
+  width: 100%; max-width: 20rem; height: auto;
+  filter: drop-shadow(0 14px 30px rgba(0,0,0,.5));
+}
+.prov-silueta path {
+  fill: rgba(216,192,137,.1);
+  stroke: var(--dorado-claro);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+@media (max-width: 820px) {
+  .prov-hero__int { grid-template-columns: 1fr; }
+  .prov-hero__mapa { order: -1; }
+  .prov-silueta { max-width: 11rem; }
+}
+
+/* ------------------------------------------------- Los bloques de contenido */
+.prov-bloques { display: flex; flex-direction: column; }
+.prov-bloque + .prov-bloque {
+  margin-top: clamp(2.2rem, 4vw, 3.2rem);
+  padding-top: clamp(2.2rem, 4vw, 3.2rem);
+  border-top: 1px solid rgba(126,120,36,.2);
+}
+.prov-bloque h2 { margin-bottom: .7rem; }
+.prov-bloque p { max-width: 62ch; }
+
+/* ------------------------------------------------ Paso a otra provincia */
+.prov-paso {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem clamp(1rem, 3vw, 2.4rem);
+  margin-top: clamp(2.4rem, 4vw, 3.4rem);
+  padding-top: clamp(1.6rem, 3vw, 2.2rem);
+  border-top: 1px solid rgba(181,154,85,.24);
+  text-align: left;
+}
+.prov-paso__ir {
+  display: inline-flex; align-items: center; gap: .9rem;
+  color: var(--texto-inv-s);
+  transition: color var(--trans-rapida);
+}
+.prov-paso__ir--der { justify-content: flex-end; text-align: right; }
+.prov-paso__ir span { display: flex; flex-direction: column; line-height: 1.25; }
+.prov-paso__ir em {
+  font-style: normal; font-size: .6rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--dorado);
+}
+.prov-paso__ir:hover, .prov-paso__ir:focus-visible { color: var(--dorado-claro); }
+.prov-paso__mapa { width: 46px; height: 46px; flex: none; }
+.prov-paso__mapa path {
+  fill: rgba(216,192,137,.14);
+  stroke: var(--dorado); stroke-width: 3; stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.prov-paso__todas {
+  font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--texto-inv-s); white-space: nowrap;
+}
+.prov-paso__todas:hover { color: var(--dorado-claro); }
+
+@media (max-width: 620px) {
+  .prov-paso { grid-template-columns: 1fr 1fr; }
+  .prov-paso__todas { grid-column: 1 / -1; order: 3; text-align: center; }
+}
+
+/* ---------------------------------------------- El indice de las ocho */
+.prov-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+.prov-ficha {
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  background: var(--marfil-2);
+  border: 1px solid rgba(126,120,36,.22);
+  border-radius: var(--radio);
+  transition: transform var(--trans-rapida), border-color var(--trans-rapida),
+              box-shadow var(--trans-rapida);
+}
+.prov-ficha:hover, .prov-ficha:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--dorado);
+  box-shadow: var(--sombra);
+}
+.prov-ficha__foto {
+  display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--carbon);
+}
+.prov-ficha__foto img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 720ms cubic-bezier(.22,.61,.36,1);
+}
+.prov-ficha:hover .prov-ficha__foto img { transform: scale(1.05); }
+
+.prov-ficha__cuerpo {
+  position: relative;
+  display: flex; flex-direction: column; gap: .28rem;
+  padding: clamp(1.2rem, 2.4vw, 1.7rem);
+}
+.prov-ficha__num {
+  position: absolute; top: .7rem; right: 1rem;
+  font-family: var(--display);
+  font-size: 3.4rem; line-height: 1;
+  color: rgba(126,120,36,.13);
+}
+.prov-ficha__mapa {
+  width: 40px; height: 40px; margin-bottom: .35rem;
+}
+.prov-ficha__mapa path {
+  fill: rgba(126,120,36,.14);
+  stroke: var(--oliva); stroke-width: 3; stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.prov-ficha__nombre {
+  font-family: var(--display);
+  font-size: clamp(1.55rem, 1.2rem + .9vw, 2rem); line-height: 1.05;
+  color: var(--texto);
+}
+.prov-ficha__lema {
+  font-size: .64rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--oliva-osc);
+}
+.prov-ficha__pase {
+  margin-top: .5rem;
+  font-size: .95rem; line-height: 1.45; font-style: italic;
+  color: var(--texto-medio);
+}
+.prov-ficha__mas {
+  margin-top: .9rem;
+  font-size: .64rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--oliva);
+}
+.prov-ficha__mas::after { content: ' →'; }
+
+/* El enlace del kicker, en las fichas de provincia */
+.kicker a { color: inherit; border-bottom: 1px solid rgba(181,154,85,.5); }
+.kicker a:hover { color: var(--dorado); }
+
+/* ------------------------------------- Mapa con arte (indice de provincias) */
+.mapa-marco--arte {
+  background:
+    radial-gradient(90% 70% at 50% 40%, rgba(250,245,236,.95), rgba(216,199,166,.55) 100%),
+    var(--marfil-2);
+  box-shadow: var(--sombra-suave);
+}
+.mapa-marco--arte::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background:
+    linear-gradient(90deg, var(--dorado) 0 24px, transparent 24px) top left / 100% 1px no-repeat,
+    linear-gradient(90deg, var(--dorado) 0 24px, transparent 24px) bottom right / 100% 1px no-repeat;
+}
+.mapa-svg--arte .provincia {
+  fill: var(--arena); stroke: var(--dorado); stroke-width: 2.6;
+  filter: drop-shadow(0 6px 8px rgba(36,31,24,.22));
+}
+.mapa-svg--arte .provincia:hover { fill: var(--oliva-claro); }
+.mapa-svg--arte .provincia-trama {
+  fill: url(#mapa-trama); opacity: .55; pointer-events: none;
+  transition: opacity 380ms ease;
+}
+.mapa-svg--arte g.es-activa .provincia-trama { opacity: .9; }
+.mapa-svg--arte .marcador circle {
+  fill: var(--carbon); stroke: var(--dorado); stroke-width: 2;
+}
+.mapa-svg--arte .marcador text.marcador__num {
+  font-family: var(--display); font-size: 19px; font-weight: 600; letter-spacing: 0;
+  text-transform: none; fill: var(--dorado-claro);
+}
+.mapa-svg--arte g.es-activa .marcador circle,
+.mapa-svg--arte g:hover .marcador circle { fill: var(--terracota); stroke: var(--marfil-2); }
+.mapa-svg--arte g.es-activa .marcador text.marcador__num,
+.mapa-svg--arte g:hover .marcador text.marcador__num { fill: var(--marfil-2); }
+.mapa-svg--arte .marcador text:not(.marcador__num) {
+  font-size: 17px; font-weight: 500; fill: var(--carbon);
+  paint-order: stroke; stroke: rgba(250,245,236,.7); stroke-width: 4px; stroke-linejoin: round;
+}
+.mapa-svg--arte g.es-activa .marcador text:not(.marcador__num),
+.mapa-svg--arte g:hover .marcador text:not(.marcador__num) { fill: var(--carbon); }
+.mapa-ruta { pointer-events: none; }
+.mapa-ruta path {
+  fill: none; stroke: var(--terracota); stroke-width: 2.4; stroke-dasharray: 2 9;
+  stroke-linecap: round; opacity: .85;
+}
+.mapa-rotulo {
+  font-family: var(--display); font-style: italic; font-size: 19px; letter-spacing: .18em;
+  fill: rgba(92,83,68,.5); pointer-events: none;
+}
+.mapa-rotulo--mar { fill: rgba(78,84,40,.55); letter-spacing: .3em; font-size: 21px; }
+.mapa-rosa { pointer-events: none; }
+.mapa-rosa path { fill: rgba(181,154,85,.5); stroke: var(--dorado); stroke-width: 1; }
+.mapa-rosa text { font-family: var(--display); font-size: 15px; fill: var(--dorado); }
+@media (prefers-reduced-motion: no-preference) {
+  .mapa-ruta path { animation: mapa-ruta 2.4s linear infinite; }
+}
+@keyframes mapa-ruta { to { stroke-dashoffset: -22; } }
+
+/* El relato de Baecula en la ficha de Jaen (sobre fondo claro) */
+.prov-relato h2 { margin-bottom: 1.4rem; }
+.prov-relato p + p { margin-top: 1.1rem; }
+.prov-relato p:not(.kicker):not(.apunte) { color: var(--texto-medio); }
+.prov-relato b { color: var(--texto); font-weight: 500; }
+.prov-relato .apunte { margin-top: 1.8rem; font-size: .82rem; font-style: italic; color: var(--oliva-osc); }
+
+/* ----------------------------------- Fichas de provincia: lectura editorial */
+.prov-datos { grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 2.6rem); }
+.prov-datos .dato strong { font-size: clamp(1.7rem, 1.1rem + 2.2vw, 2.9rem); }
+@media (max-width: 620px) { .prov-datos { grid-template-columns: 1fr; gap: 1.2rem; } }
+
+/* Dos columnas: el titulo se queda quieto mientras se lee el texto */
+.prov-ed { display: grid; gap: clamp(1.4rem, 4vw, 4rem); grid-template-columns: minmax(0, .8fr) minmax(0, 1.5fr); align-items: start; }
+.prov-ed__cab { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+.prov-ed__cab h2 { margin-top: .5rem; font-size: clamp(1.9rem, 1.3rem + 2vw, 3rem); line-height: 1.05; }
+.prov-ed__cuerpo p { max-width: 62ch; font-size: 1.04rem; line-height: 1.75; }
+.prov-ed__cuerpo p + p { margin-top: 1.15rem; }
+.prov-ed--inv .prov-ed__cuerpo p { color: var(--texto-inv); }
+.prov-ed__nota {
+  margin-top: 1.6rem; padding-left: 1.1rem; border-left: 2px solid var(--dorado);
+  font-family: var(--display); font-style: italic; font-size: 1.2rem; line-height: 1.45; color: var(--dorado-claro);
+}
+@media (max-width: 860px) {
+  .prov-ed { grid-template-columns: 1fr; }
+  .prov-ed__cab { position: static; }
+}
+/* La primera letra de la historia, grande, como en un libro */
+.capitular > p:first-child::first-letter {
+  float: left; font-family: var(--display); font-size: 4.4rem; line-height: .8;
+  padding: .28rem .6rem 0 0; color: var(--oliva);
+}
+
+/* La palabra de la tierra, a gran tamano */
+.prov-palabra { padding-block: clamp(.5rem, 2vw, 1.5rem); }
+.prov-palabra__voz {
+  font-family: var(--display); font-style: italic; font-weight: 400;
+  font-size: clamp(3.6rem, 2rem + 8vw, 8rem); line-height: 1; color: var(--oliva); margin: .2rem 0 1rem;
+}
+.prov-palabra__def { max-width: 54ch; margin-inline: auto; font-size: 1.1rem; line-height: 1.7; color: var(--texto-medio); }
+.prov-palabra__ej {
+  margin-top: 1.4rem; font-family: var(--display); font-style: italic; font-size: 1.35rem; color: var(--terracota);
+}
+
+/* "Cuando": una etiqueta con el mes */
+.prov-cuando {
+  display: inline-flex; flex-direction: column; gap: .15rem; margin-top: 1.2rem;
+  padding: .7rem 1rem; border: 1px solid rgba(181,154,85,.5);
+  font-family: var(--display); font-size: 1.3rem; color: var(--marfil);
+}
+.prov-cuando span { font-family: var(--texto-ff); font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--dorado); }
+
+/* La cabecera del indice: el mapa ocupa la derecha y el texto queda en la sombra de la izquierda */
+.hero--mapa .hero__media { background: #14120f; }
+.hero--mapa .hero__arco { display: none; }
+.hero--mapa .hero__media img { object-position: right center; }
+@media (min-width: 700px) {
+  .hero--mapa .hero__media img {
+    position: absolute; top: 0; bottom: 0; left: auto; right: 0; width: 74%; height: 100%;
+    object-fit: contain; object-position: right center;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16%), linear-gradient(180deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 16%), linear-gradient(180deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+    -webkit-mask-composite: source-in; mask-composite: intersect;
+  }
+  .hero--mapa .hero__int > * { max-width: min(34rem, 52%); }
+}
+
+/* El indice ligero bajo el mapa */
+.prov-lista { margin-top: clamp(2rem, 4vw, 3rem); }
+.prov-lista ol {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+.prov-lista__ir {
+  position: relative; display: grid; grid-template-columns: auto 1fr; column-gap: .8rem; align-items: center;
+  padding: .8rem 1rem; border: 1px solid rgba(126,120,36,.22); border-radius: var(--radio);
+  background: var(--marfil-2); transition: border-color var(--trans-rapida), transform var(--trans-rapida);
+}
+.prov-lista__ir:hover, .prov-lista__ir:focus-visible { border-color: var(--dorado); transform: translateY(-2px); }
+.prov-lista__mapa { grid-row: 1 / 3; width: 34px; height: 34px; }
+.prov-lista__mapa path { fill: rgba(126,120,36,.14); stroke: var(--oliva); stroke-width: 3; vector-effect: non-scaling-stroke; }
+.prov-lista__num { position: absolute; top: .35rem; right: .7rem; font-family: var(--display); font-size: 1.1rem; color: rgba(126,120,36,.5); }
+.prov-lista__nombre { font-family: var(--display); font-size: 1.3rem; line-height: 1.1; color: var(--texto); }
+.prov-lista__lema { font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--oliva-osc); }
+
+/* ---------------------------------------------- El Camino Primitivo */
+.camino-etapas { list-style: none; margin: 0; padding: 0; position: relative; }
+.camino-etapas::before {
+  content: ''; position: absolute; left: 1.35rem; top: .6rem; bottom: .6rem; width: 0;
+  border-left: 2px dotted var(--dorado);
+}
+.camino-tramo { position: relative; display: grid; grid-template-columns: 2.7rem 1fr; gap: 1.4rem; padding-bottom: clamp(1.8rem, 4vw, 2.8rem); }
+.camino-tramo:last-child { padding-bottom: 0; }
+.camino-tramo__num {
+  position: relative; z-index: 1; display: grid; place-items: center;
+  width: 2.7rem; height: 2.7rem; border-radius: 50%;
+  background: var(--carbon); border: 1.5px solid var(--dorado);
+  font-family: var(--display); font-size: 1.3rem; color: var(--dorado-claro);
+}
+.camino-tramo__lugares {
+  font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--oliva-osc); margin-bottom: .2rem;
+}
+.camino-tramo h3 { margin-bottom: .5rem; }
+.camino-tramo p:last-child { max-width: 60ch; }
+
+/* La etiqueta "km 0 · Oviedo" de la cabecera del Camino */
+.camino-km {
+  position: absolute; right: var(--gutter); bottom: clamp(1.2rem, 4vh, 2.4rem); z-index: 1;
+  display: inline-flex; align-items: baseline; gap: .7rem; margin: 0;
+  padding: .55rem 1rem; border: 1px solid rgba(216,192,137,.55); background: rgba(20,18,14,.45);
+  font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--marfil);
+}
+.camino-km span { font-family: var(--display); font-size: 1.35rem; letter-spacing: 0; text-transform: none; color: var(--dorado-claro); }
+
+/* La concha del Camino en el menu */
+.nav__concha { display: inline-block; width: 1.15em; height: 1.15em; margin-right: .5em; vertical-align: -.22em; overflow: visible; }
+.nav__concha path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* El chef trabajando: cuatro fotos horizontales, en dos columnas */
+.chef-trabajo { display: grid; gap: clamp(.6rem, 1.4vw, 1rem); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.chef-trabajo figure { margin: 0; overflow: hidden; border: 1px solid rgba(181,154,85,.3); background: var(--carbon-2); aspect-ratio: 3 / 2; }
+.chef-trabajo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 720ms cubic-bezier(.22,.61,.36,1); }
+.chef-trabajo figure:hover img { transform: scale(1.04); }
+.chef-trabajo__a img { object-position: 35% 40%; }
+.chef-trabajo__c img { object-position: 50% 35%; }
+@media (max-width: 620px) { .chef-trabajo { grid-template-columns: 1fr; } }
+
+
+/* ------------------------------------------ Las tarjetas de espacio, en dos columnas
+   La regla base solo declaraba `display: grid`, sin columnas: en escritorio la
+   foto ocupaba todo el ancho y salia enorme. Hasta 1180 px responsive.css las
+   apila (1fr !important). Una foto vertical se queda en su tamano natural,
+   centrada, y nunca pasa del alto de la pantalla. */
+.espacio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.espacio .marco--alto {
+  aspect-ratio: 4 / 5; width: min(100%, 460px); max-height: 80vh; margin-inline: auto;
 }

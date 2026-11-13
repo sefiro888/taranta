@@ -26,6 +26,7 @@
     panel.classList.remove('es-abierto');
     boton.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.body.classList.remove('menu-abierto');
   }
 
   if (boton && panel) {
@@ -33,6 +34,7 @@
       var abierto = panel.classList.toggle('es-abierto');
       boton.setAttribute('aria-expanded', abierto ? 'true' : 'false');
       document.body.style.overflow = abierto ? 'hidden' : '';
+      document.body.classList.toggle('menu-abierto', abierto);
       if (abierto) {
         var primero = panel.querySelector('a');
         if (primero) primero.focus({ preventScroll: true });

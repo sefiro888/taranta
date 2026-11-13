@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="assets/images/rincon-yeseria.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=c0c9c1d4">
+<link rel="stylesheet" href="css/styles.css?v=d89fc18c">
 <link rel="stylesheet" href="css/responsive.css?v=c415f764">
 </head>
 <body>
@@ -51,14 +51,31 @@
       <img src="assets/logo/logo-marfil.png" width="949" height="433" alt="La Taranta · Andalucía en el corazón de Asturias">
     </a>
     <nav class="nav" aria-label="Navegación principal">
-      <a href="experiencia.html">Experiencia</a>
-      <a href="carta.html">Carta</a>
-      <a href="menu-degustacion.html">Degustación</a>
-      <a href="restaurante.html" aria-current="page">El restaurante</a>
-      <a href="flamenco.html">Flamenco</a>
+      <div class="nav__grupo">
+        <button type="button" class="nav__boton" aria-expanded="false" aria-controls="nav-la-mesa">
+          La mesa<span class="nav__flecha" aria-hidden="true"></span>
+        </button>
+        <div class="nav__panel" id="nav-la-mesa">
+          <a href="carta.html">Carta</a>
+          <a href="menu-degustacion.html">Menú degustación</a>
+          <a href="provincias.html">Las ocho provincias</a>
+          <a href="chef.html">El chef</a>
+        </div>
+      </div>
+      <div class="nav__grupo">
+        <button type="button" class="nav__boton" data-dentro="si" aria-expanded="false" aria-controls="nav-la-casa">
+          La casa<span class="nav__flecha" aria-hidden="true"></span>
+        </button>
+        <div class="nav__panel" id="nav-la-casa">
+          <a href="restaurante.html" aria-current="page">El restaurante</a>
+          <a href="experiencia.html">La experiencia</a>
+          <a href="flamenco.html">El tablao</a>
+          <a href="historia.html">Historia</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+      </div>
       <a href="eventos.html">Eventos</a>
-      <a href="galeria.html">Galería</a>
-      <a href="historia.html">Historia</a>
+      <a href="camino-primitivo.html"><svg class="nav__concha" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21 8.4 18.2C5 16.6 3 13.2 3 9.6 5.4 6.6 8.5 5 12 5s6.6 1.6 9 4.6c0 3.6-2 7-5.4 8.6Z"/><path d="M12 21V6M12 21 7.4 7.6M12 21l4.6-13.4M12 21 4.4 11M12 21l7.6-10"/></svg>El Camino</a>
       <a href="contacto.html">Contacto</a>
     </nav>
     <a class="boton boton--cabecera" href="reservas.html">Reservar mesa</a>
@@ -70,16 +87,25 @@
 
 <div class="menu-movil" id="menu-movil">
   <nav aria-label="Navegación móvil">
-    <a href="experiencia.html"><span>01</span>Experiencia</a>
-    <a href="carta.html"><span>02</span>Carta</a>
-    <a href="menu-degustacion.html"><span>03</span>Degustación</a>
-    <a href="restaurante.html" aria-current="page"><span>04</span>El restaurante</a>
-    <a href="flamenco.html"><span>05</span>Flamenco</a>
-    <a href="eventos.html"><span>06</span>Eventos</a>
-    <a href="galeria.html"><span>07</span>Galería</a>
-    <a href="historia.html"><span>08</span>Historia</a>
-    <a href="contacto.html"><span>09</span>Contacto</a>
-    <a href="reservas.html"><span>10</span>Reservas</a>
+    <div class="menu-movil__grupo">
+      <p class="menu-movil__titulo">La mesa</p>
+      <a href="carta.html">Carta</a>
+      <a href="menu-degustacion.html">Menú degustación</a>
+      <a href="provincias.html">Las ocho provincias</a>
+      <a href="chef.html">El chef</a>
+    </div>
+    <div class="menu-movil__grupo">
+      <p class="menu-movil__titulo">La casa</p>
+      <a href="restaurante.html" aria-current="page">El restaurante</a>
+      <a href="experiencia.html">La experiencia</a>
+      <a href="flamenco.html">El tablao</a>
+      <a href="historia.html">Historia</a>
+      <a href="galeria.html">Galería</a>
+    </div>
+    <a class="menu-movil__suelto" href="eventos.html">Eventos</a>
+    <a class="menu-movil__suelto" href="camino-primitivo.html"><svg class="nav__concha" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21 8.4 18.2C5 16.6 3 13.2 3 9.6 5.4 6.6 8.5 5 12 5s6.6 1.6 9 4.6c0 3.6-2 7-5.4 8.6Z"/><path d="M12 21V6M12 21 7.4 7.6M12 21l4.6-13.4M12 21 4.4 11M12 21l7.6-10"/></svg>El Camino</a>
+    <a class="menu-movil__suelto" href="contacto.html">Contacto</a>
+    <a class="menu-movil__suelto" href="reservas.html">Reservar mesa</a>
   </nav>
   <div class="menu-movil__pie">
     <a class="boton" href="reservas.html">Reservar mesa</a>
@@ -324,7 +350,8 @@
   </a>
 </div>
 
-<script src="js/main.js?v=dbcbbed3"></script>
+<script src="js/main.js?v=397eaa65"></script>
+<script src="js/navegacion.js?v=dbf55004"></script>
 <script src="js/cookies.js?v=49cb3958"></script>
 <script src="js/reservas.js?v=93b94f17"></script>
 <script src="js/arqueria.js?v=8936f0ef"></script>
