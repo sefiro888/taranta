@@ -47,7 +47,6 @@ P = {
              ('208 a. C.', 'la batalla de Baecula')],
    'foto': 'plato-falsa-trufa-jaen.jpg',
    'foto_pie': 'Falsa trufa de paté de perdiz, el pase de Jaén.',
-   'conexion': 'El primer pase junta lo que da la provincia: perdiz, piñón y aceite de oliva virgen extra, texturizado, con un toque de flores.',
    'hist_t': 'Cástulo, y debajo el metal',
    'hist': 'Mucho antes del olivo estuvo el mineral. Cástulo, junto a Linares, fue una de las ciudades más poderosas de la Hispania ibera y romana, y lo fue por lo que había debajo: plomo y plata. Según los autores antiguos, de allí era Himilce, la esposa de Aníbal.\n\nVeinte siglos después, las mismas sierras seguían sacando gente de las entrañas de la tierra, y de ahí salió un cante. Y no es la única historia de guerra y de metal de esta provincia: en Santo Tomé, en la Sierra de Cazorla, se libró la batalla de Baecula, que se cuenta más abajo.',
    'arte_t': 'La taranta, el cante de las minas',
@@ -82,7 +81,6 @@ P = {
              ('Mayo – sept.', 'la temporada del espeto')],
    'foto': 'almejas-aove.jpg',
    'foto_pie': 'Almejas con aceite de oliva virgen extra, de la cocina de la casa.',
-   'conexion': 'El pase de Málaga junta la huerta y el mar: ostra, crema de ajo blanco y boquerón en vinagre. Almendra, vinagre y pescado: tres sabores muy malagueños en un solo bocado.',
    'hist_t': 'Malaka, la de los fenicios',
    'hist': 'Fundada por los fenicios hacia el siglo VIII antes de Cristo, Málaga lleva casi tres mil años siendo puerto. Por ahí entraron el vino, la pasa y el comercio, y por ahí entró también lo que vino después: romanos, bizantinos, el reino nazarí. Una ciudad que siempre ha mirado al agua.\n\nSobre la ciudad sigue en pie la Alcazaba, palacio-fortaleza musulmán del siglo XI, y a sus pies asoma un teatro romano: siglos de capas, una encima de otra. Ya en el XIX, la ciudad vio nacer a Pablo Picasso, en 1881.',
    'arte_t': 'Malagueñas y verdiales',
@@ -102,7 +100,6 @@ P = {
              ('Casi 3.500 m', 'el Mulhacén, el pico más alto de la península')],
    'foto': 'plato-autor.jpg', 'foto_alto': True,
    'foto_pie': 'Cocina de autor de La Taranta.',
-   'conexion': 'El pase de Granada lleva la Alpujarra al tartar: chorizo ibérico, espuma de patata, huevo, panceta ibérica y padrón. Los sabores de la sierra, servidos como un bocado de cocina de autor.',
    'hist_t': 'El último reino',
    'hist': 'Granada fue la capital del último reino musulmán de la península y resistió dos siglos y medio más que el resto de al-Ándalus, hasta 1492. De esa demora vienen la Alhambra y el Generalife, y viene también la Alpujarra: las sierras donde se refugiaron los moriscos y donde quedaron sus pueblos encalados, su manera de cultivar y su comida.\n\nTodo empezó en 1238 con Muhámmad I, el fundador de la dinastía nazarí, que eligió la colina de la Sabika para levantar lo que hoy es la Alhambra. Palacios, agua y yeserías que esta casa homenajea en sus arcos.',
    'arte_t': 'La zambra del Sacromonte',
@@ -122,8 +119,7 @@ P = {
              ('1812', '«La Pepa», la primera Constitución'),
              ('Febrero', 'el Carnaval')],
    'foto': 'plato-cadiz-tortita-camarones.jpg', 'foto_alto': True,
-   'foto_pie': 'Tortita de camarones crujiente, el pase de Cádiz.',
-   'conexion': 'El pase de Cádiz es el recuerdo de la bahía más frita: una tortita de camarones crujiente y mahonesa de lima. La tortillita nace en San Fernando y Chiclana: harina de garbanzo, camarón vivo y aceite muy caliente.',
+   'foto_pie': 'Tortillitas de camarones crujientes, el pase de Cádiz.',
    'hist_t': 'La ciudad más vieja',
    'hist': 'Los fenicios fundaron Gadir y Cádiz pasa por ser una de las ciudades habitadas más antiguas de Europa occidental. Tres mil años de puerto: del comercio del garum romano a las flotas de Indias, y de ahí a 1812, cuando entre sus murallas sitiadas se proclamó la primera Constitución española.\n\nSe proclamó el 19 de marzo, día de San José, y por eso se la conoce como «la Pepa». Se redactó con la ciudad cercada por el ejército francés y el mar como única puerta abierta.',
    'arte_t': 'Alegrías, tanguillos y el tango de Cádiz',
@@ -143,7 +139,6 @@ P = {
              ('2012', 'los patios, Patrimonio Inmaterial')],
    'foto': 'canelon-flor.jpg', 'foto_alto': True,
    'foto_pie': 'Canelón de rabo de toro con crema trufada, el pase de Córdoba.',
-   'conexion': 'El pase de Córdoba toma el guiso más largo, el rabo de toro, y lo enrolla en un canelón con crema trufada y lascas de queso ahumado. Paciencia de fuego lento, presentación de hoy.',
    'hist_t': 'La capital de Occidente',
    'hist': 'En el siglo X, con el Califato, Córdoba fue una de las ciudades más grandes y cultas del mundo conocido. De entonces quedan la Mezquita y, a las afueras, las ruinas de Medina Azahara, la ciudad palatina que se levantó y se destruyó en menos de un siglo. También fue cuna de Séneca, de Averroes y de Maimónides: tres maneras distintas de pensar en la misma ciudad.\n\nEn el centro quedó la Mezquita, a la que siglos después se le abrió una catedral en mitad del bosque de columnas: dos edificios en uno, y por eso no se parece a nada.',
    'arte_t': 'La soleá y el fandango de Lucena',
@@ -163,7 +158,6 @@ P = {
              ('1847', 'la primera Feria de Abril')],
    'foto': 'plato-sevilla-bacalao.jpg',
    'foto_pie': 'Bacalao con patata revolcona y tomate especiado, el pase de Sevilla.',
-   'conexion': 'El pase de Sevilla es de barra y de convento: bacalao a baja temperatura, patata revolcona y tomate especiado. Receta de siempre, técnica de ahora.',
    'hist_t': 'El puerto de las Indias',
    'hist': 'Al lado de Sevilla está Itálica, la primera ciudad romana fundada fuera de Italia y cuna de dos emperadores. Pero su siglo fue el XVI: durante casi doscientos años, todo el comercio con América pasó obligatoriamente por su puerto fluvial. Sevilla fue, literalmente, la puerta de un continente.\n\nItálica la fundó Escipión el Africano en el 206 antes de Cristo, tras ganar en Ilipa, para asentar a sus soldados heridos. Es la continuación de la historia de Baecula, que se cuenta en <a href="provincia-jaen.html">la ficha de Jaén</a>.',
    'arte_t': 'La soleá de Triana y las sevillanas',
@@ -183,7 +177,6 @@ P = {
              ('2010', 'los fandangos de Huelva, Bien de Interés Cultural')],
    'foto': 'carpaccio-presa.jpg',
    'foto_pie': 'Carpaccio de presa ibérica.',
-   'conexion': 'El pase de Huelva viene de la sierra de Aracena: presa ibérica D.O. Jabugo con caldo de jamón y setas. De la dehesa al plato, con el producto como único adorno.',
    'hist_t': 'Tartessos y el viaje',
    'hist': 'La costa de Huelva se asocia al reino de Tartessos, la primera civilización documentada de la península, rica precisamente por los metales de su sierra. Tres mil años después, de uno de sus puertos, Palos de la Frontera, zarpó en 1492 la expedición que cruzó el Atlántico. Dos veces, con mucho tiempo de por medio, Huelva fue el borde del mundo conocido.\n\nLas minas de Riotinto, explotadas desde la Antigüedad y de nuevo a gran escala desde el siglo XIX, dan cuenta de lo mismo: como en Jaén y en Almería, esta tierra se entiende mirando bajo el suelo.',
    'arte_t': 'Los fandangos de Huelva',
@@ -203,7 +196,6 @@ P = {
              ('1997', 'Cabo de Gata, Reserva de la Biosfera')],
    'foto': 'postre-taranta.jpg',
    'foto_pie': 'Postre de la casa.',
-   'conexion': 'El pase de Almería es dulce: buñuelo con crema de vainilla y mousse de chocolate blanco. Cierra el recorrido por las ocho provincias.',
    'hist_t': 'Al-Mariyya, el espejo del mar',
    'hist': 'Almería nació en el siglo X como puerto del Califato de Córdoba, y su nombre árabe se suele traducir como «el espejo del mar» o «la atalaya». De entonces es su Alcazaba, una de las fortalezas musulmanas más grandes de España. Siglos después llegó la otra riqueza: las minas de la Sierra Almagrera, que trajeron gente, dinero y, como en Jaén, un cante.\n\nLa Alcazaba se levantó para vigilar la ciudad y el puerto, y casi mil años después sigue mirando al mar.',
    'arte_t': 'El taranto',
@@ -247,6 +239,17 @@ def pases():
             'alergenos': re.findall(r"'([^']+)'", al.group(1)) if al else [],
         }
     return out
+
+
+def sala():
+    """El guion del camarero, de la fuente unica (data/menu-data.js)."""
+    s = io.open(os.path.join(RAIZ, 'data', 'menu-data.js'), encoding='utf-8').read()
+    bruto = re.search(r'window\.SALA\s*=\s*(\{.*?\n\});', s, re.S).group(1)
+    return json.loads(bruto)
+
+
+def cita_sala(texto):
+    return ('<blockquote class="sala-cita"><p>%s</p><cite>Así lo cuenta la sala</cite></blockquote>' % texto)
 
 
 def silueta(trazado, clase='prov-silueta'):
@@ -311,7 +314,7 @@ def extra(d):
 
 
 # ------------------------------------------------------------------- PAGINAS
-def pagina(pid, d, pase, G, inicio, pie, ant, sig):
+def pagina(pid, d, pase, G, inicio, pie, ant, sig, SALA):
     nombre = d['nombre']
     titulo = '%s · Las ocho provincias de La Taranta' % nombre
     desc = ('%s en el menú degustación de La Taranta: %s Su historia, su cante, su habla y sus costumbres.'
@@ -366,7 +369,7 @@ def pagina(pid, d, pase, G, inicio, pie, ant, sig):
       '        <p class="kicker">El plato</p>\n'
       '        <h2>' + pase['titular'] + '</h2>\n'
       '        <p class="lead">' + pase['texto'] + '</p>\n'
-      '        <p>' + d['conexion'] + '</p>\n'
+      '        ' + cita_sala(SALA[pid]) + '\n'
       '        <div class="mapa-panel__pase" style="margin-top:1.6rem"><b>El pase</b><p>'
       + pase['pase'] + '</p>' + apunte + alerg + '</div>\n'
       '      </div>\n'
@@ -456,7 +459,7 @@ def pagina(pid, d, pase, G, inicio, pie, ant, sig):
     return s + '\n' + main + pie
 
 
-def indice(inicio, pie, datos, G):
+def indice(inicio, pie, datos, G, SALA):
     titulo = 'Las ocho provincias andaluzas · La Taranta Oviedo'
     desc = ('El menú degustación de La Taranta recorre las ocho provincias andaluzas en nueve pases. '
             'La historia, el cante, el habla y las costumbres de cada una.')
@@ -517,6 +520,7 @@ def indice(inicio, pie, datos, G):
       '      <h2>Homenaje a la abuela Micaela</h2>\n'
       '      <p class="lead" style="margin-inline:auto">No pertenece a ninguna provincia: es el postre con el que el chef cierra el recorrido.</p>\n'
       '      <p>Helado de A.O.V.E., pestiños y espuma de leche merengada.</p>\n'
+      + cita_sala(SALA['homenaje']) + '\n'
       '      <a class="enlace-fino" href="menu-degustacion.html">Verlo en el menú</a>\n'
       '    </div>\n'
       '  </div>\n'
@@ -547,15 +551,16 @@ def indice(inicio, pie, datos, G):
 def generar():
     os.chdir(RAIZ)
     datos = pases()
+    SALA = sala()
     G = geo()
     inicio, pie = plantilla()
     for i, pid in enumerate(ORDEN):
         ant = ORDEN[(i - 1) % len(ORDEN)]
         sig = ORDEN[(i + 1) % len(ORDEN)]
-        html = pagina(pid, P[pid], datos[pid], G, inicio, pie, ant, sig)
+        html = pagina(pid, P[pid], datos[pid], G, inicio, pie, ant, sig, SALA)
         io.open('provincia-%s.html' % pid, 'w', encoding='utf-8', newline='').write(html)
         print('  provincia-%s.html' % pid)
-    io.open('provincias.html', 'w', encoding='utf-8', newline='').write(indice(inicio, pie, datos, G))
+    io.open('provincias.html', 'w', encoding='utf-8', newline='').write(indice(inicio, pie, datos, G, SALA))
     print('  provincias.html (indice)')
     print('generadas', len(ORDEN) + 1, 'paginas')
 

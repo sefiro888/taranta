@@ -2079,3 +2079,20 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 .espacio .marco--alto {
   aspect-ratio: 4 / 5; width: min(100%, 460px); max-height: 80vh; margin-inline: auto;
 }
+
+/* Lo que cuenta la sala: el guion del camarero, citado */
+.sala-cita {
+  margin: 1.4rem 0 0; padding: .2rem 0 .2rem 1.3rem; border-left: 2px solid var(--dorado);
+}
+.sala-cita p {
+  font-family: var(--display); font-style: italic; font-size: 1.22rem; line-height: 1.6; color: var(--texto-medio);
+}
+.fondo-carbon .sala-cita p, .mapa-panel .sala-cita p { color: var(--texto-inv); }
+.sala-cita cite {
+  display: block; margin-top: .7rem; font: 400 .66rem/1.5 var(--texto-ff); font-style: normal;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--dorado);
+}
+.pase .sala-cita { margin-bottom: 1.2rem; }
+.sala-intro p { font-size: 1.08rem; line-height: 1.8; color: var(--texto-inv); max-width: 62ch; }
+.sala-intro p + p { margin-top: 1.1rem; }
+.sala-intro .sala-saludo { font-family: var(--display); font-style: italic; font-size: 1.5rem; color: var(--dorado-claro); }

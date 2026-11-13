@@ -237,11 +237,11 @@ window.PROVINCIAS = [
   { id: 'cadiz', nombre: 'Cádiz', orden: 4,
     titular: 'De chirigotas por Cádiz',
     texto: 'La bahía en un bocado crujiente, con un punto cítrico que despierta.',
-    pase: 'Tortita de camarones crujiente y mahonesa de lima.',
+    pase: 'Tortillitas de camarones crujientes y mahonesa de lima.',
     apunte: 'La tortillita de camarones nace en la bahía de Cádiz, en San Fernando y Chiclana: harina de garbanzo, camarón vivo y aceite muy caliente.',
     alergenos: ['gluten', 'marisco', 'lácteos'],
     img: 'assets/images/plato-cadiz-tortita-camarones-h.jpg',
-    alt: 'Tortita de camarones crujiente sobre una tabla de madera de olivo, cuarto pase del menú degustación' },
+    alt: 'Tortillitas de camarones crujientes sobre una tabla de madera de olivo, cuarto pase del menú degustación' },
   { id: 'cordoba', nombre: 'Córdoba', orden: 5,
     titular: 'Córdoba la llana',
     texto: 'Guiso largo de toda la vida convertido en canelón, con trufa y queso ahumado.',
@@ -272,6 +272,29 @@ window.HOMENAJE = {
   apunte: 'El pestiño es masa frita con ajonjolí y anís, bañada en miel. Dulce de casa, de Navidad y de Semana Santa en toda Andalucía.',
   texto: 'El último pase no pertenece a ninguna provincia: es el homenaje del chef a su abuela. Cierra el viaje donde empiezan todas las cocinas del sur.',
   alergenos: ['gluten', 'huevo', 'lácteos']
+};
+
+/* -------------------------------------------- LO QUE CUENTA LA SALA
+   Guion que el camarero dice a los comensales al servir cada pase, facilitado
+   por el restaurante. Es la fuente unica: el menu, el mapa y las fichas de
+   provincia lo leen de aqui. Va escrito como JSON (comillas dobles) para que
+   scripts/provincias.py pueda leerlo sin duplicarlo.                        */
+window.SALA = {
+  "intro": [
+    "Buenas noches, o buenos días, y bienvenidos a La Taranta.",
+    "La Taranta es un palo flamenco de las minas de Linares, donde el propietario, Juan Carlos Revert, ha querido unir a través de un cante el norte con el sur, siendo Asturias minera y su tierra, Jaén, también. Así como Huelva y Almería.",
+    "Este menú degustación está compuesto por nueve platos representativos de las ocho provincias andaluzas, y el último, el noveno, es un homenaje que nuestro chef, José Ignacio, hace a su abuela Micaela, quien le ha enseñado el sabor de lo tradicional y lo auténtico.",
+    "Ambos, del mismo pueblo y la misma calle, han decidido traer a La Taranta la gastronomía, el flamenco y el arte de su tierra."
+  ],
+  "jaen": "En «Simplemente Jaén», José Ignacio nos prepara una falsa trufa de perdiz, con piñones, aceite de oliva virgen extra texturizado y un toque de flores. Aquí el chef nos muestra las diferentes comarcas de sierra de Jaén, dando vital importancia al aceite de oliva virgen extra.",
+  "malaga": "De punta a punta de Málaga, los espetos de sardinas, los boquerones y el ajo blanco es lo que caracteriza a esta provincia andaluza. En este plato tenemos a la ostra, la reina del mar de Málaga, con crema de ajo blanco y boquerón en vinagre. Todos ellos representan la esencia de Málaga.",
+  "granada": "La gastronomía de la Alpujarra granadina es muy diferente a otros platos de la provincia de Granada. En este caso, el chef ha querido representar esta propuesta para darla a conocer, siendo ésta una gran desconocida. Está compuesto por tartar de chorizo ibérico, espuma de patata, huevo, panceta ibérica y pimientos de padrón.",
+  "cadiz": "Cádiz es sin duda nuestra provincia con más salero. El arte de su gente la identifica y su gastronomía es mundialmente conocida. Aquí el chef ha recreado unas tortillitas de camarones, dándoles frescura con la mayonesa de lima.",
+  "cordoba": "Qué decir de Córdoba, con su mezquita y su barrio de la judería, orgullo de todos los andaluces. Uno de los platos característicos de esta provincia es sin duda el rabo de toro: aquí el chef José Ignacio nos lo presenta en forma de canelón, con crema trufada y lascas de queso ahumado, otro gran producto de la provincia de Córdoba.",
+  "sevilla": "Nuestra Sevilla es donde ya Dios echó el resto: con su catedral, la Giralda, el río Guadalquivir, Triana... Es en la Feria de Abril y en la Semana Santa cuando el mundo pone los ojos en Sevilla. Para eso nuestro chef nos presenta bacalao a baja temperatura, típico de la Semana Santa, con patata revolcona y tomate especiado.",
+  "huelva": "Nuestra Huelva es la provincia más occidental de Andalucía, y tiene su momento más álgido con la romería del Rocío, la cual todos conocemos. Pero hay otra Huelva de interior, donde predominan sus sierras y, con ellas, sus jamones, como los de Jabugo, mundialmente conocidos. Aquí nuestro chef nos presenta un plato de presa ibérica de denominación de origen Jabugo, con caldo de jamón y setas.",
+  "almeria": "Si Huelva es nuestra provincia más occidental, la más oriental es Almería. En toda la provincia destacan sus dulces, hechos con todo el cariño y con la tradición, quizás de las más antiguas de Andalucía. Aquí José Ignacio nos presenta un buñuelo con crema de vainilla y mousse de chocolate blanco.",
+  "homenaje": "Y este noveno y último plato es donde José Ignacio se pone más sensible. Micaela, su abuela, fue la persona que le inculcó el amor por la cocina: probaba sus platos y se los aplaudía, y decía que su nieto era el único que sabía darle su toque a la cocina que ella le enseñaba. Gran «dulcera», y por eso José Ignacio nos trae un helado de aceite de oliva virgen extra, pestiños y espuma de leche merengada."
 };
 
 /* ------------------------------------------- FICHA DEL MENU DEGUSTACION

@@ -190,6 +190,13 @@
     return p && p.apunte ? '<p class="apunte">' + p.apunte + '</p>' : '';
   }
 
+  /* Lo que el camarero cuenta al servir cada pase (guion del restaurante, en
+     data/menu-data.js). Si un pase no lo trae, no se inventa nada. */
+  function salaCita(id) {
+    var t = window.SALA && window.SALA[id];
+    return t ? '<blockquote class="sala-cita"><p>' + t + '</p><cite>Así lo cuenta la sala</cite></blockquote>' : '';
+  }
+
   function alergenos(p) {
     if (!p || !p.alergenos || !p.alergenos.length) return '';
     return '<p class="alergenos"><b>Alérgenos</b> ' + p.alergenos.join(' · ') + '</p>';
@@ -288,6 +295,14 @@
     fichaMenu.innerHTML = h;
   }
 
+  /* ------------------------------- La bienvenida de la sala (menu degustacion) */
+  var salaIntro = document.querySelector('[data-sala-intro]');
+  if (salaIntro && window.SALA && window.SALA.intro) {
+    salaIntro.innerHTML = window.SALA.intro.map(function (t, i) {
+      return '<p' + (i === 0 ? ' class="sala-saludo"' : '') + '>' + t + '</p>';
+    }).join('');
+  }
+
   /* -------------------------------------- Listado de pases (menu degustacion) */
   var lista = document.querySelector('[data-pases]');
   if (lista) {
@@ -299,6 +314,7 @@
           '<p class="pase__provincia">' + p.nombre + ' &middot; ' + p.titular + '</p>' +
           '<h3>' + p.pase + '</h3>' +
           '<p class="pase__desc">' + p.texto + '</p>' +
+          salaCita(p.id) +
           apunte(p) + alergenos(p) +
           (p.img ? '<div class="pase__foto"><div class="marco marco--ancho marco--filete"><img src="' + p.img + '" alt="' + (p.alt || p.nombre) + '" loading="lazy"></div></div>' : '') +
         '</div>' +
@@ -311,6 +327,7 @@
           '<p class="pase__provincia">' + window.HOMENAJE.nombre + '</p>' +
           '<h3>' + window.HOMENAJE.pase + '</h3>' +
           '<p class="pase__desc">' + window.HOMENAJE.texto + '</p>' +
+          salaCita('homenaje') +
           apunte(window.HOMENAJE) + alergenos(window.HOMENAJE) +
         '</div>' +
       '</article>';
