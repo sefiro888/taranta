@@ -2096,3 +2096,7 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 .sala-intro p { font-size: 1.08rem; line-height: 1.8; color: var(--texto-inv); max-width: 62ch; }
 .sala-intro p + p { margin-top: 1.1rem; }
 .sala-intro .sala-saludo { font-family: var(--display); font-style: italic; font-size: 1.5rem; color: var(--dorado-claro); }
+
+/* La foto que abre el relato de Baecula en la ficha de Jaen */
+.prov-relato__foto { margin: 0 0 1.8rem; }
+.prov-relato__foto .pie-foto { margin-top: .6rem; }

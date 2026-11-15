@@ -62,6 +62,9 @@ P = {
    # contrastada con las excavaciones de la Universidad de Jaen (Bellon Ruiz
    # y otros, 2015). Lo que es testimonio del propietario va como testimonio.
    'extra': {
+     'foto': 'olivar-jaen',
+     'foto_alt': 'Un olivar de Jaén al atardecer, con las aceitunas verdes en la rama y un pueblo en el valle al fondo',
+     'foto_pie': 'El olivar de Juan Carlos, en Jaén.',
      'kicker': 'Aceite con historia',
      'titulo': 'Baecula, 208 antes de Cristo',
      'parrafos': [
@@ -301,16 +304,25 @@ def extra(d):
     if not e:
         return ''
     ps = ''.join('      <p>%s</p>\n' % p for p in e['parrafos'])
+    foto = ''
+    if e.get('foto'):
+        n = e['foto']
+        foto = ('      <figure class="prov-relato__foto">\n'
+                '        <div class="marco marco--ancho marco--filete"><img src="assets/images/%s-sm.jpg" '
+                'srcset="assets/images/%s-sm.jpg 900w, assets/images/%s.jpg 1600w" '
+                'sizes="(max-width: 860px) 92vw, 760px" alt="%s" loading="lazy"></div>\n'
+                '        <figcaption class="pie-foto">%s</figcaption>\n'
+                '      </figure>\n' % (n, n, n, e['foto_alt'], e['foto_pie']))
     nota = ('      <p class="apunte">%s</p>\n' % e['nota']) if e.get('nota') else ''
     return ('<section class="seccion fondo-marfil textura-papel">\n'
             '  <div class="contenedor--estrecho">\n'
             '    <article class="prov-relato reveal">\n'
             '      <p class="kicker">%s</p>\n'
             '      <h2>%s</h2>\n'
-            '%s%s'
+            '%s%s%s'
             '    </article>\n'
             '  </div>\n'
-            '</section>\n\n' % (e['kicker'], e['titulo'], ps, nota))
+            '</section>\n\n' % (e['kicker'], e['titulo'], foto, ps, nota))
 
 
 # ------------------------------------------------------------------- PAGINAS
