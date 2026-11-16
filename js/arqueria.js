@@ -20,7 +20,7 @@
       enlace: 'restaurante.html#el-patio', cta: 'Ver El Patio' },
     { id: 'el-cortijo', nombre: 'El Cortijo', orden: 'II',
       titular: 'El comedor de mantel largo',
-      texto: 'Lámparas granadinas, tejas centenarias y un panorama de olivar. Aquí se sirven la carta de autor y el menú degustación.',
+      texto: 'Lámparas granadinas y tejas centenarias. Aquí se sirven la carta de autor y el menú degustación.',
       img: 'assets/images/comedor-flores.jpg',
       alt: 'Comedor principal El Cortijo, con arcos y flores',
       enlace: 'restaurante.html#el-cortijo', cta: 'Ver El Cortijo' },

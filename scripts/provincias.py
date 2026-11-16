@@ -45,8 +45,6 @@ P = {
    'datos': [('+60 millones', 'de olivos en la provincia'),
              ('Nº 1', 'productor de aceite de oliva del mundo'),
              ('208 a. C.', 'la batalla de Baecula')],
-   'foto': 'plato-falsa-trufa-jaen.jpg',
-   'foto_pie': 'Falsa trufa de paté de perdiz, el pase de Jaén.',
    'hist_t': 'Cástulo, y debajo el metal',
    'hist': 'Mucho antes del olivo estuvo el mineral. Cástulo, junto a Linares, fue una de las ciudades más poderosas de la Hispania ibera y romana, y lo fue por lo que había debajo: plomo y plata. Según los autores antiguos, de allí era Himilce, la esposa de Aníbal.\n\nVeinte siglos después, las mismas sierras seguían sacando gente de las entrañas de la tierra, y de ahí salió un cante. Y no es la única historia de guerra y de metal de esta provincia: en Santo Tomé, en la Sierra de Cazorla, se libró la batalla de Baecula, que se cuenta más abajo.',
    'arte_t': 'La taranta, el cante de las minas',
@@ -82,8 +80,6 @@ P = {
    'datos': [('≈ 3.000 años', 'de puerto'),
              ('1881', 'nace Picasso en Málaga'),
              ('Mayo – sept.', 'la temporada del espeto')],
-   'foto': 'almejas-aove.jpg',
-   'foto_pie': 'Almejas con aceite de oliva virgen extra, de la cocina de la casa.',
    'hist_t': 'Malaka, la de los fenicios',
    'hist': 'Fundada por los fenicios hacia el siglo VIII antes de Cristo, Málaga lleva casi tres mil años siendo puerto. Por ahí entraron el vino, la pasa y el comercio, y por ahí entró también lo que vino después: romanos, bizantinos, el reino nazarí. Una ciudad que siempre ha mirado al agua.\n\nSobre la ciudad sigue en pie la Alcazaba, palacio-fortaleza musulmán del siglo XI, y a sus pies asoma un teatro romano: siglos de capas, una encima de otra. Ya en el XIX, la ciudad vio nacer a Pablo Picasso, en 1881.',
    'arte_t': 'Malagueñas y verdiales',
@@ -101,8 +97,6 @@ P = {
    'datos': [('1492', 'cae el reino nazarí'),
              ('1984', 'la Alhambra, Patrimonio de la Humanidad'),
              ('Casi 3.500 m', 'el Mulhacén, el pico más alto de la península')],
-   'foto': 'plato-autor.jpg', 'foto_alto': True,
-   'foto_pie': 'Cocina de autor de La Taranta.',
    'hist_t': 'El último reino',
    'hist': 'Granada fue la capital del último reino musulmán de la península y resistió dos siglos y medio más que el resto de al-Ándalus, hasta 1492. De esa demora vienen la Alhambra y el Generalife, y viene también la Alpujarra: las sierras donde se refugiaron los moriscos y donde quedaron sus pueblos encalados, su manera de cultivar y su comida.\n\nTodo empezó en 1238 con Muhámmad I, el fundador de la dinastía nazarí, que eligió la colina de la Sabika para levantar lo que hoy es la Alhambra. Palacios, agua y yeserías que esta casa homenajea en sus arcos.',
    'arte_t': 'La zambra del Sacromonte',
@@ -121,8 +115,6 @@ P = {
    'datos': [('≈ 3.000 años', 'de historia, de las ciudades más antiguas de Europa'),
              ('1812', '«La Pepa», la primera Constitución'),
              ('Febrero', 'el Carnaval')],
-   'foto': 'plato-cadiz-tortita-camarones.jpg', 'foto_alto': True,
-   'foto_pie': 'Tortillitas de camarones crujientes, el pase de Cádiz.',
    'hist_t': 'La ciudad más vieja',
    'hist': 'Los fenicios fundaron Gadir y Cádiz pasa por ser una de las ciudades habitadas más antiguas de Europa occidental. Tres mil años de puerto: del comercio del garum romano a las flotas de Indias, y de ahí a 1812, cuando entre sus murallas sitiadas se proclamó la primera Constitución española.\n\nSe proclamó el 19 de marzo, día de San José, y por eso se la conoce como «la Pepa». Se redactó con la ciudad cercada por el ejército francés y el mar como única puerta abierta.',
    'arte_t': 'Alegrías, tanguillos y el tango de Cádiz',
@@ -140,8 +132,6 @@ P = {
    'datos': [('Siglo X', 'capital del Califato'),
              ('1984', 'la Mezquita, Patrimonio de la Humanidad'),
              ('2012', 'los patios, Patrimonio Inmaterial')],
-   'foto': 'canelon-flor.jpg', 'foto_alto': True,
-   'foto_pie': 'Canelón de rabo de toro con crema trufada, el pase de Córdoba.',
    'hist_t': 'La capital de Occidente',
    'hist': 'En el siglo X, con el Califato, Córdoba fue una de las ciudades más grandes y cultas del mundo conocido. De entonces quedan la Mezquita y, a las afueras, las ruinas de Medina Azahara, la ciudad palatina que se levantó y se destruyó en menos de un siglo. También fue cuna de Séneca, de Averroes y de Maimónides: tres maneras distintas de pensar en la misma ciudad.\n\nEn el centro quedó la Mezquita, a la que siglos después se le abrió una catedral en mitad del bosque de columnas: dos edificios en uno, y por eso no se parece a nada.',
    'arte_t': 'La soleá y el fandango de Lucena',
@@ -159,8 +149,6 @@ P = {
    'datos': [('206 a. C.', 'Escipión funda Itálica'),
              ('1503', 'la Casa de Contratación, puerta de las Indias'),
              ('1847', 'la primera Feria de Abril')],
-   'foto': 'plato-sevilla-bacalao.jpg',
-   'foto_pie': 'Bacalao con patata revolcona y tomate especiado, el pase de Sevilla.',
    'hist_t': 'El puerto de las Indias',
    'hist': 'Al lado de Sevilla está Itálica, la primera ciudad romana fundada fuera de Italia y cuna de dos emperadores. Pero su siglo fue el XVI: durante casi doscientos años, todo el comercio con América pasó obligatoriamente por su puerto fluvial. Sevilla fue, literalmente, la puerta de un continente.\n\nItálica la fundó Escipión el Africano en el 206 antes de Cristo, tras ganar en Ilipa, para asentar a sus soldados heridos. Es la continuación de la historia de Baecula, que se cuenta en <a href="provincia-jaen.html">la ficha de Jaén</a>.',
    'arte_t': 'La soleá de Triana y las sevillanas',
@@ -178,8 +166,6 @@ P = {
    'datos': [('1492', 'zarpa de Palos la expedición de Colón'),
              ('Doñana', 'Parque Nacional y Patrimonio de la Humanidad'),
              ('2010', 'los fandangos de Huelva, Bien de Interés Cultural')],
-   'foto': 'carpaccio-presa.jpg',
-   'foto_pie': 'Carpaccio de presa ibérica.',
    'hist_t': 'Tartessos y el viaje',
    'hist': 'La costa de Huelva se asocia al reino de Tartessos, la primera civilización documentada de la península, rica precisamente por los metales de su sierra. Tres mil años después, de uno de sus puertos, Palos de la Frontera, zarpó en 1492 la expedición que cruzó el Atlántico. Dos veces, con mucho tiempo de por medio, Huelva fue el borde del mundo conocido.\n\nLas minas de Riotinto, explotadas desde la Antigüedad y de nuevo a gran escala desde el siglo XIX, dan cuenta de lo mismo: como en Jaén y en Almería, esta tierra se entiende mirando bajo el suelo.',
    'arte_t': 'Los fandangos de Huelva',
@@ -197,8 +183,6 @@ P = {
    'datos': [('955', 'Abderramán III funda la ciudad'),
              ('Tabernas', 'el único desierto de Europa'),
              ('1997', 'Cabo de Gata, Reserva de la Biosfera')],
-   'foto': 'postre-taranta.jpg',
-   'foto_pie': 'Postre de la casa.',
    'hist_t': 'Al-Mariyya, el espejo del mar',
    'hist': 'Almería nació en el siglo X como puerto del Califato de Córdoba, y su nombre árabe se suele traducir como «el espejo del mar» o «la atalaya». De entonces es su Alcazaba, una de las fortalezas musulmanas más grandes de España. Siglos después llegó la otra riqueza: las minas de la Sierra Almagrera, que trajeron gente, dinero y, como en Jaén, un cante.\n\nLa Alcazaba se levantó para vigilar la ciudad y el puerto, y casi mil años después sigue mirando al mar.',
    'arte_t': 'El taranto',
@@ -368,23 +352,16 @@ def pagina(pid, d, pase, G, inicio, pie, ant, sig, SALA):
       '  </div>\n'
       '</section>\n\n'
 
-      # ---- el plato
+      # ---- el plato (sin foto: el emplatado cambia y la carta no lleva fotos de platos)
       '<section class="seccion fondo-carbon textura-azulejo">\n'
-      '  <div class="contenedor">\n'
-      '    <div class="duo duo--medio">\n'
-      '      <div class="reveal">\n'
-      '        <div class="marco ' + marco + ' marco--filete arco">'
-      '<img src="assets/images/' + d['foto'] + '" alt="' + d['foto_pie'] + '" loading="lazy"></div>\n'
-      '        <p class="pie-foto">' + d['foto_pie'] + '</p>\n'
-      '      </div>\n'
-      '      <div class="reveal" data-delay="1">\n'
-      '        <p class="kicker">El plato</p>\n'
-      '        <h2>' + pase['titular'] + '</h2>\n'
-      '        <p class="lead">' + pase['texto'] + '</p>\n'
-      '        ' + cita_sala(SALA[pid]) + '\n'
-      '        <div class="mapa-panel__pase" style="margin-top:1.6rem"><b>El pase</b><p>'
+      '  <div class="contenedor--estrecho">\n'
+      '    <div class="reveal">\n'
+      '      <p class="kicker">El plato</p>\n'
+      '      <h2>' + pase['titular'] + '</h2>\n'
+      '      <p class="lead">' + pase['texto'] + '</p>\n'
+      '      ' + cita_sala(SALA[pid]) + '\n'
+      '      <div class="mapa-panel__pase" style="margin-top:1.6rem"><b>El pase</b><p>'
       + pase['pase'] + '</p>' + apunte + alerg + '</div>\n'
-      '      </div>\n'
       '    </div>\n'
       '  </div>\n'
       '</section>\n\n'

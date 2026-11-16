@@ -34,7 +34,7 @@ ISO  = 'assets/logo/isotipo-marfil.png'       # solo el simbolo
 # destino -> (foto, tamano del logo, usar logo completo)
 PAGINAS = [
     ('compartir',              'tablao.jpg',                 0.46, True),
-    ('compartir-degustacion',  'plato-falsa-trufa-jaen.jpg', 0.40, True),
+    ('compartir-degustacion',  'exp-carta-madera.jpg',       0.40, True),
     ('compartir-carta',        'cocina-emplatado.jpg',       0.40, True),
     ('compartir-flamenco',     'tablao-logo-suelo.jpg',      0.42, True),
     ('compartir-restaurante',  'salon-arcos-flores.jpg',     0.42, True),
@@ -44,7 +44,7 @@ PAGINAS = [
     ('compartir-eventos',      'arcos-barricas.jpg',         0.42, True),
     ('compartir-reservas',     'comedor-mesas-vestidas.jpg', 0.42, True),
     ('compartir-contacto',     'entrada-rosal.jpg',          0.42, True),
-    ('compartir-experiencia',  'comedor-arcos-pintura.jpg',  0.42, True),
+    ('compartir-experiencia',  'exp-patio-tragaluz.jpg',     0.42, True),
     ('compartir-camino',       'entrada-rosal.jpg',          0.42, True),
 ]
 

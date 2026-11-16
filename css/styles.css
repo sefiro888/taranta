@@ -2100,3 +2100,6 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 /* La foto que abre el relato de Baecula en la ficha de Jaen */
 .prov-relato__foto { margin: 0 0 1.8rem; }
 .prov-relato__foto .pie-foto { margin-top: .6rem; }
+
+/* Dos tarjetas en lugar de tres (Quien hizo que, en historia) */
+@media (min-width: 861px) { .trio--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
