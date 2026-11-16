@@ -35,7 +35,7 @@ cabecera y el pie de veintidós páginas.
 |---|---|
 | Páginas | 22 |
 | Alojamiento | GitHub Pages, rama `main` |
-| Reservas | Widget de Tableo |
+| Reservas | Widget de CoverManager |
 | Analítica | Ninguna. No se rastrea a nadie |
 
 ### Estructura
@@ -87,7 +87,7 @@ imágenes.
 
 La web **no instala cookies propias, ni analítica, ni publicidad.**
 
-Incrusta tres servicios de terceros —Tableo, Google Maps y YouTube— y **ninguno
+Incrusta tres servicios de terceros —CoverManager, Google Maps y YouTube— y **ninguno
 se carga por su cuenta**: los iframes no llevan `src` hasta que el visitante
 acepta, y el vídeo no descarga nada hasta que se pulsa el play. Si se rechaza,
 la página sigue siendo útil y ofrece la alternativa.

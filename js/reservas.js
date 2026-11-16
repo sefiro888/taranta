@@ -144,7 +144,7 @@
   });
 
 
-  /* ------------------ Widget de reservas (Tableo): ajuste de altura
+  /* ------------------ Widget de reservas (CoverManager): ajuste de altura
      Si el widget comunica su altura por postMessage, el marco se adapta.
      Si no lo hace, se queda con la altura definida en el CSS.             */
   function montarWidget() {
@@ -158,19 +158,18 @@
       setTimeout(listo, 9000);  // por si el evento no llegase
     }
 
-    window.addEventListener('message', function (e) {
-      var host = '';
-      try { host = new URL(e.origin).hostname; } catch (err) { return; }
-      if (!/(^|\.)tableo\.com$/.test(host)) return;
-
-      var alto = null;
-      var d = e.data;
-      if (typeof d === 'number') alto = d;
-      else if (typeof d === 'string' && /^\d+$/.test(d)) alto = parseInt(d, 10);
-      else if (d && typeof d === 'object') alto = d.height || d.iframeHeight || (d.payload && d.payload.height);
-
-      if (alto && alto > 400 && alto < 3000) marcoReserva.style.height = alto + 'px';
-    });
+    /* La altura la ajusta el script de CoverManager (iFrameResizer). Es de un
+       tercero, asi que solo se descarga cuando ya se han aceptado las cookies:
+       este codigo solo corre cuando el marco existe. */
+    if (!window.__coverResizer) {
+      window.__coverResizer = true;
+      var guion = document.createElement('script');
+      guion.src = 'https://www.covermanager.com/js/iframeResizer/iframeResizer.min.js';
+      guion.onload = function () {
+        if (window.iFrameResize) window.iFrameResize({ log: false }, marcoReserva);
+      };
+      document.head.appendChild(guion);
+    }
 
     /* Los botones flotantes se apartan mientras el widget esta en pantalla:
        no deben taparle ningun control al que esta reservando. */
@@ -191,7 +190,7 @@
   }
   }
 
-  /* El iframe de Tableo no existe hasta que se aceptan las cookies, asi que
+  /* El iframe de CoverManager no existe hasta que se aceptan las cookies, asi que
      se monta tambien cuando cookies.js avisa de que ya lo ha insertado. */
   montarWidget();
   document.addEventListener('lt:terceros-cargados', montarWidget);

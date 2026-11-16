@@ -282,7 +282,7 @@
       { b: 'Reserva anticipada', v: F.antelacion, s: 'De antelación' },
       { b: 'Maridaje', v: 'Vinos del sur', s: 'Finos, manzanillas, olorosos y amontillados' },
       { b: 'Mínimo de comensales', v: 'Dos personas', s: 'El menú se sirve para la mesa' },
-      { b: 'Días disponibles', v: 'Todos', s: 'Excepto los martes, que cerramos' },
+      { b: 'Días disponibles', v: 'Todos', s: 'Todos los días que abrimos' },
       { b: 'Duración aproximada', v: '— h — min', pendiente: true }
     ];
     var h = '';

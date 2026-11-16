@@ -2,7 +2,7 @@
    LA TARANTA - Consentimiento de cookies
 
    Bloquea de verdad: los iframes de terceros no llevan src al cargar la
-   pagina, sino data-cookie-src. Nada se descarga de Google ni de Tableo
+   pagina, sino data-cookie-src. Nada se descarga de Google ni de CoverManager
    hasta que la persona acepta. Eso es lo que pide el articulo 22.2 de la
    LSSI: consentimiento previo, no un cartel encima de algo ya cargado.
 
@@ -55,6 +55,10 @@
       marco.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
       var clase = hueco.getAttribute('data-cookie-clase');
       if (clase) marco.className = clase;
+      var ident = hueco.getAttribute('data-cookie-id');
+      if (ident) marco.id = ident;
+      var permisos = hueco.getAttribute('data-cookie-allow');
+      if (permisos) marco.setAttribute('allow', permisos);
       hueco.innerHTML = '';
       hueco.appendChild(marco);
       hueco.dataset.cookieCargado = 'si';
@@ -91,7 +95,7 @@
       '<div class="cookies__texto">' +
       '<p class="cookies__titulo" id="cookies-titulo">Cookies de terceros</p>' +
       '<p>Para enseñarle el mapa y el sistema de reservas tenemos que cargar ' +
-      '<b>Google Maps</b> y <b>Tableo</b>, que instalan cookies propias. ' +
+      '<b>Google Maps</b> y <b>CoverManager</b>, que instalan cookies propias. ' +
       'No usamos analítica ni publicidad. ' +
       '<a href="politica-privacidad.html#cookies">Más detalle</a>.</p>' +
       '</div>' +
