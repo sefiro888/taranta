@@ -2432,3 +2432,98 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 .carta-reserva__adorno::after { content: ''; position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; background: var(--dorado); transform: translate(-50%, -50%) rotate(45deg); box-shadow: 0 0 0 6px #1b1814; }
 .carta-reserva__texto { max-width: 46ch; margin: 0 auto 1.8rem; font-family: var(--display); font-size: clamp(1.15rem, 1.05rem + .4vw, 1.35rem); line-height: 1.5; color: var(--texto-inv-s); }
 @media (max-width: 520px) { .carta-reserva .acciones { flex-direction: column; } .carta-reserva .boton { width: 100%; justify-content: center; text-align: center; } }
+
+/* =========================================================================
+   15. EVENTOS · LOS SEIS FORMATOS
+   Seis tarjetas oscuras con doble filete dorado sobre el papel de la sala.
+   ========================================================================= */
+.formatos-intro .lead { color: var(--texto-medio); max-width: 60ch; margin-inline: auto; }
+.formatos-intro__adorno { position: relative; display: block; width: 170px; height: 11px; margin: 1.2rem auto 1.4rem; }
+.formatos-intro__adorno::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+}
+.formatos-intro__adorno::after {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px;
+  background: var(--dorado); transform: translate(-50%, -50%) rotate(45deg); box-shadow: 0 0 0 7px var(--marfil);
+}
+
+.formatos { display: grid; gap: clamp(1.1rem, 2.2vw, 1.8rem); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 640px)  { .formatos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1020px) { .formatos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.formato {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding: clamp(2rem, 3.2vw, 2.8rem) clamp(1.6rem, 2.6vw, 2.2rem) clamp(1.7rem, 2.6vw, 2.2rem);
+  background: radial-gradient(130% 120% at 100% 0%, #2f281e 0%, var(--carbon) 58%);
+  border: 1px solid rgba(181,154,85,.6); color: var(--texto-inv);
+  box-shadow: 0 22px 40px -30px rgba(23,21,17,.7);
+  transition: transform 500ms cubic-bezier(.22,.61,.36,1), box-shadow 500ms ease, border-color 500ms ease;
+}
+.formato::before {
+  content: ''; position: absolute; inset: 7px; z-index: -1; pointer-events: none;
+  border: 1px solid rgba(181,154,85,.28); transition: border-color 500ms ease;
+}
+.formato::after {                       /* brillo dorado que barre la tarjeta */
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(115deg, transparent 35%, rgba(216,192,137,.16) 50%, transparent 65%);
+  transform: translateX(-120%); transition: transform 900ms cubic-bezier(.22,.61,.36,1);
+}
+.formato__estrella {
+  position: absolute; top: -26px; right: -26px; width: 150px; height: 150px; z-index: -1;
+  fill: none; stroke: var(--dorado); stroke-width: .6; stroke-opacity: .32; stroke-linejoin: round;
+  transition: transform 1400ms cubic-bezier(.22,.61,.36,1), stroke-opacity 500ms ease;
+}
+.formato__num {
+  font-family: var(--display); font-weight: 300; line-height: .85; letter-spacing: .02em;
+  font-size: clamp(3.6rem, 3rem + 2vw, 5rem); font-variant-numeric: lining-nums;
+  color: transparent; -webkit-text-stroke: 1px rgba(216,192,137,.85);
+  background: linear-gradient(var(--dorado), var(--dorado)) left bottom / 100% 0 no-repeat;
+  -webkit-background-clip: text; background-clip: text;
+  transition: background-size 700ms cubic-bezier(.22,.61,.36,1);
+}
+.formato h3 {
+  margin: 1.5rem 0 0; color: var(--marfil); font-weight: 400;
+  font-size: clamp(1.7rem, 1.35rem + 1.1vw, 2.15rem); line-height: 1.1;
+}
+.formato__adorno { position: relative; display: block; width: 90px; height: 9px; margin: 1.1rem 0 1.1rem; }
+.formato__adorno::before {
+  content: ''; position: absolute; left: 11px; right: 0; top: 50%; height: 1px;
+  background: linear-gradient(90deg, var(--dorado), transparent);
+}
+.formato__adorno::after {
+  content: ''; position: absolute; left: 0; top: 50%; width: 6px; height: 6px;
+  background: var(--dorado); transform: translateY(-50%) rotate(45deg);
+}
+.formato p { margin: 0; color: var(--texto-inv); font-size: 1.02rem; line-height: 1.72; max-width: 40ch; }
+.formato__enlace {
+  position: relative; margin-top: auto; padding-top: 1.7rem;
+  font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; text-decoration: none;
+  color: var(--dorado-claro);
+}
+.formato__enlace::before {
+  content: ''; position: absolute; left: 0; bottom: -6px; height: 1px; width: 2.2rem; background: var(--dorado);
+  transition: width 500ms cubic-bezier(.22,.61,.36,1);
+}
+.formato__enlace span { display: inline-block; transition: transform 400ms ease; }
+.formato__enlace:focus-visible { outline: 1px solid var(--dorado-claro); outline-offset: 8px; }
+
+@media (hover: hover) {
+  .formato:hover, .formato:focus-within {
+    transform: translateY(-8px); border-color: var(--dorado-claro);
+    box-shadow: 0 34px 50px -28px rgba(23,21,17,.8), 0 0 40px -10px rgba(216,192,137,.4);
+  }
+  .formato:hover::before, .formato:focus-within::before { border-color: rgba(216,192,137,.6); }
+  .formato:hover::after, .formato:focus-within::after { transform: translateX(120%); }
+  .formato:hover .formato__estrella { transform: rotate(45deg) scale(1.08); stroke-opacity: .6; }
+  .formato:hover .formato__num { background-size: 100% 100%; }
+  .formato:hover .formato__enlace::before, .formato:focus-within .formato__enlace::before { width: 100%; }
+  .formato:hover .formato__enlace span { transform: translateX(6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .formato, .formato::after, .formato__estrella, .formato__num, .formato__enlace::before, .formato__enlace span { transition: none; }
+  .formato:hover { transform: none; }
+}
+
+.formatos-intro { margin-bottom: clamp(2.4rem, 5vw, 3.8rem); }
