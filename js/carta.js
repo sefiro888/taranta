@@ -35,39 +35,41 @@
   /* ------------------------------------------------------------- Render */
   function pintar() {
     var html = '';
+    var ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+    var orden = {};
     D.categorias.forEach(function (cat) {
       var platos = D.platos.filter(function (p) { return p.cat === cat.id; });
       if (!platos.length) return;
+      var carta = cat.carta || 'autor';
+      orden[carta] = (orden[carta] || 0) + 1;
 
       html += '<section class="carta-grupo reveal" data-grupo="' + cat.id + '" data-carta-grupo="' +
-        (cat.carta || 'autor') + '" id="cat-' + cat.id + '">' +
+        carta + '" id="cat-' + cat.id + '">' +
         '<header class="carta-grupo__cab">' +
+        '<div class="carta-grupo__tit">' +
         '<p class="kicker">' + cat.kicker + '</p>' +
         '<h2>' + cat.nombre + '</h2>' +
-        '<p>' + cat.texto + '</p>' +
+        '<span class="carta-grupo__adorno" aria-hidden="true"></span>' +
+        '<p class="carta-grupo__texto">' + cat.texto + '</p>' +
+        '</div>' +
+        '<span class="carta-grupo__num" aria-hidden="true">' + ROMANOS[orden[carta] - 1] + '</span>' +
         '</header><div class="platos">';
 
       platos.forEach(function (p) {
         var busca = (p.nombre + ' ' + (p.desc || '')).toLowerCase();
-        var clases = 'plato' + (p.img ? ' plato--con-foto' : '');
+        var clases = 'plato' + (p.destacado ? ' plato--destacado' : '');
         html += '<article class="' + clases + '" data-plato="' + p.id + '" data-busca="' +
           esc(busca) + '" data-cat="' + p.cat + '">';
 
-        if (p.img) {
-          html += '<button class="plato__foto" type="button" data-ver="' + p.id +
-            '" aria-label="Ver la fotografía de ' + esc(p.nombre) + '">' +
-            '<img src="' + p.img.replace('.jpg', '-sm.jpg') + '" alt="' + esc(p.alt || p.nombre) + '" loading="lazy"></button>';
-        }
-
-        html += '<h3 class="plato__nombre">' + p.nombre + '</h3>' + precioHTML(p);
+        html += '<div class="plato__cab"><h3 class="plato__nombre">' + p.nombre + '</h3>' +
+          '<span class="plato__guia" aria-hidden="true"></span>' + precioHTML(p) + '</div>';
         if (p.desc) html += '<p class="plato__desc">' + p.desc + '</p>';
 
         var etiquetas = [];
         if (p.unidades) etiquetas.push('<span class="etiqueta">' + p.unidades + '</span>');
-        if (p.minimo) etiquetas.push('<span class="etiqueta etiqueta--aviso">Mínimo ' + p.minimo + ' personas</span>');
-        if (p.espera) etiquetas.push('<span class="etiqueta etiqueta--aviso">Elaboración: ' + p.espera + '</span>');
-        if (p.destacado) etiquetas.push('<span class="etiqueta etiqueta--destacado">Recomendado</span>');
-        if (p.img) etiquetas.push('<button class="etiqueta etiqueta--ver" type="button" data-ver="' + p.id + '">Ver el plato</button>');
+        if (p.minimo) etiquetas.push('<span class="etiqueta etiqueta--aviso">M&iacute;nimo ' + p.minimo + ' personas</span>');
+        if (p.espera) etiquetas.push('<span class="etiqueta etiqueta--aviso">Elaboraci&oacute;n: ' + p.espera + '</span>');
+        if (p.destacado) etiquetas.push('<span class="etiqueta etiqueta--destacado">Recomendado de la casa</span>');
         if (p.nota) etiquetas.push('<span class="etiqueta">' + p.nota + '</span>');
         if (etiquetas.length) html += '<div class="plato__etiquetas">' + etiquetas.join('') + '</div>';
 

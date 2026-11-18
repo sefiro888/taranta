@@ -2103,3 +2103,209 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 
 /* Dos tarjetas en lugar de tres (Quien hizo que, en historia) */
 @media (min-width: 861px) { .trio--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* =========================================================================
+   14. CARTA Y MENU DEGUSTACION · DISENO EDITORIAL SIN FOTOGRAFIAS
+   Sin fotos, la presencia la dan la tipografia, el color y el ritmo:
+   banda oscura por seccion con numeral en romanos, precio unido al nombre
+   con guia punteada, y los nueve pases como un recorrido vertical.
+   ========================================================================= */
+
+/* ---- Selector de cartas */
+.carta-pestanas {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: .8rem; background: none; border: 0;
+}
+.carta-pestana {
+  position: relative; background: transparent; padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid rgba(181,154,85,.55);
+}
+.carta-pestana span { font-weight: 500; font-size: clamp(1.4rem, 1.15rem + .8vw, 1.8rem); }
+.carta-pestana small { letter-spacing: .2em; line-height: 1.5; }
+.carta-pestana:hover { background: rgba(181,154,85,.1); }
+.carta-pestana.es-activa { background: var(--carbon); border-color: var(--carbon); }
+.carta-pestana.es-activa::after {
+  content: ''; position: absolute; left: 1.5rem; right: 1.5rem; bottom: .7rem; height: 1px;
+  background: linear-gradient(90deg, var(--dorado), transparent);
+}
+.carta-pestana.es-activa span { color: var(--marfil); }
+
+.filtro.es-activo { background: var(--carbon); border-color: var(--carbon); color: var(--dorado-claro); }
+.filtro:hover { border-color: var(--dorado); color: var(--texto); }
+
+/* ---- Seccion de la carta: banda oscura + hoja de papel */
+.carta-grupo { margin-top: clamp(3rem, 6vw, 5.2rem); }
+.carta-grupo__cab {
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; margin: 0; overflow: hidden;
+  padding: clamp(2rem, 4.5vw, 3.4rem) clamp(1.5rem, 4vw, 3.6rem);
+  background: radial-gradient(120% 160% at 88% 0%, #2c261d 0%, var(--carbon) 62%);
+  border: 1px solid rgba(181,154,85,.6);
+}
+.carta-grupo__cab::before {
+  content: ''; position: absolute; inset: 7px; pointer-events: none;
+  border: 1px solid rgba(181,154,85,.3);
+}
+.carta-grupo__tit { position: relative; max-width: 60ch; }
+.carta-grupo__cab .kicker { color: var(--dorado-claro); margin-bottom: .5rem; }
+.carta-grupo__cab h2 {
+  color: var(--marfil); font-weight: 400; margin: 0;
+  font-size: clamp(2.1rem, 1.4rem + 2.8vw, 3.5rem); line-height: 1.04;
+}
+.carta-grupo__adorno { position: relative; display: block; width: 150px; height: 11px; margin: 1.15rem 0 1rem; }
+.carta-grupo__adorno::before {
+  content: ''; position: absolute; left: 12px; right: 0; top: 50%; height: 1px;
+  background: linear-gradient(90deg, var(--dorado), transparent);
+}
+.carta-grupo__adorno::after {
+  content: ''; position: absolute; left: 0; top: 50%; width: 7px; height: 7px;
+  background: var(--dorado); transform: translateY(-50%) rotate(45deg);
+}
+.carta-grupo__cab .carta-grupo__texto {
+  margin: 0; max-width: 56ch; color: var(--texto-inv-s);
+  font-family: var(--display); font-weight: 400; font-size: clamp(1.15rem, 1.05rem + .4vw, 1.35rem); line-height: 1.55;
+}
+.carta-grupo__num {
+  position: relative; flex: none; align-self: center;
+  font-family: var(--display); font-weight: 300; line-height: .85; letter-spacing: .02em;
+  font-size: clamp(4.2rem, 2.6rem + 7vw, 9rem);
+  color: transparent; -webkit-text-stroke: 1px rgba(216,192,137,.75);
+}
+
+.platos {
+  grid-template-columns: minmax(0, 1fr); column-gap: clamp(3rem, 6vw, 6rem);
+  padding: clamp(.5rem, 1.4vw, 1.1rem) clamp(1.3rem, 4vw, 3.6rem) clamp(1rem, 2vw, 1.8rem);
+  background: var(--marfil-2); border: 1px solid rgba(181,154,85,.6); border-top: 0;
+}
+@media (min-width: 980px) { .platos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.plato {
+  display: block; padding: clamp(1.4rem, 2.4vw, 1.9rem) 0;
+  border-bottom: 1px solid rgba(181,154,85,.3);
+}
+.plato:last-child { border-bottom: 0; }
+.plato__cab { display: flex; align-items: baseline; gap: .7rem; }
+.plato__nombre {
+  flex: 0 1 auto; margin: 0; color: var(--texto); font-weight: 600;
+  font-size: clamp(1.32rem, 1.12rem + .7vw, 1.66rem); line-height: 1.18;
+}
+.plato__guia {
+  flex: 1 1 1.5rem; min-width: 1.2rem; transform: translateY(-.3em);
+  border-bottom: 1px dotted rgba(181,154,85,.95);
+}
+.plato__precio {
+  flex: none; margin: 0; color: var(--terracota); font-weight: 600;
+  font-size: clamp(1.3rem, 1.1rem + .6vw, 1.62rem);
+}
+.plato__precio small {
+  font-weight: 400; font-size: .6rem; letter-spacing: .14em; text-align: right;
+  color: var(--texto-suave); margin-top: .15rem;
+}
+.plato__desc {
+  margin: .6rem 0 0; max-width: none; color: var(--texto-medio);
+  font-size: 1.03rem; line-height: 1.68; font-weight: 400;
+}
+.plato__etiquetas { margin-top: .75rem; gap: .35rem 1.1rem; }
+.plato .etiqueta {
+  display: inline-flex; align-items: center; gap: .5rem; padding: 0; border: 0; border-radius: 0;
+  background: none; font-size: .66rem; letter-spacing: .16em; color: var(--texto-suave);
+}
+.plato .etiqueta::before {
+  content: ''; width: 5px; height: 5px; flex: none; background: var(--dorado); transform: rotate(45deg);
+}
+.plato .etiqueta--aviso, .plato .etiqueta--destacado { color: var(--terracota); background: none; }
+
+/* El plato recomendado se distingue con un fondo calido y una estrella */
+.plato--destacado {
+  margin-inline: calc(-1 * clamp(.8rem, 1.4vw, 1.2rem));
+  padding-inline: clamp(.8rem, 1.4vw, 1.2rem);
+  background: linear-gradient(90deg, rgba(181,154,85,.15), rgba(181,154,85,0) 85%);
+  border-left: 2px solid var(--dorado);
+}
+.plato--destacado .plato__nombre::after {
+  content: "\2726"; margin-left: .55rem; color: var(--dorado); font-size: .62em; vertical-align: .22em;
+}
+
+/* ---- Menu degustacion: recorrido de nueve pases, de Jaen a Almeria */
+.seccion--pases .portadilla__kicker { color: var(--dorado-claro); }
+.pases { margin-top: clamp(3.2rem, 6vw, 5.2rem); }
+.pase {
+  display: grid; grid-template-columns: clamp(84px, 13vw, 180px) minmax(0, 1fr);
+  gap: clamp(1.2rem, 4vw, 4.2rem); padding: 0; border: 0; align-items: stretch;
+}
+.pase:last-child { border: 0; }
+.pase__riel {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  padding-top: clamp(2.2rem, 4vw, 3.4rem);
+}
+.pase__riel::after {
+  content: ''; flex: 1; width: 1px; margin-top: 1.1rem;
+  background: linear-gradient(var(--dorado), rgba(181,154,85,.12));
+}
+.pase:last-child .pase__riel::after { display: none; }
+.pase__num {
+  font-family: var(--display); font-weight: 300; line-height: .85; letter-spacing: .02em;
+  font-size: clamp(3.4rem, 2rem + 5vw, 7rem);
+  color: transparent; -webkit-text-stroke: 1px var(--dorado);
+}
+.pase__cuerpo {
+  padding-block: clamp(2.2rem, 4vw, 3.4rem);
+  border-bottom: 1px solid rgba(181,154,85,.22);
+}
+.pase:last-child .pase__cuerpo { border-bottom: 0; }
+.pase__provincia {
+  margin: 0 0 .7rem; font-size: .74rem; letter-spacing: .36em; text-transform: uppercase;
+  color: var(--dorado-claro);
+}
+.pase__titular {
+  margin: 0 0 1.3rem; font-weight: 400; color: var(--marfil);
+  font-size: clamp(2.1rem, 1.4rem + 2.8vw, 3.4rem); line-height: 1.06;
+}
+.pase__plato {
+  margin: 0; max-width: 56ch; padding: 1.25rem 1.5rem 1.3rem;
+  background: rgba(244,235,221,.05); border: 1px solid rgba(181,154,85,.4);
+  font-family: var(--display); font-size: clamp(1.3rem, 1.1rem + .8vw, 1.75rem); line-height: 1.38;
+  color: var(--dorado-claro);
+}
+.pase__plato::before {
+  content: "El pase"; display: block; margin-bottom: .55rem;
+  font-family: var(--texto-ff); font-size: .62rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--texto-inv-s);
+}
+.pase .pase__desc {
+  margin: 1.4rem 0 0; max-width: 62ch; font-family: var(--texto-ff);
+  font-size: 1.06rem; line-height: 1.75; color: var(--texto-inv);
+}
+.pase .sala-cita { margin: 1.5rem 0 0; max-width: 62ch; border-left-color: var(--dorado); }
+.pase .sala-cita p { font-size: clamp(1.18rem, 1.08rem + .35vw, 1.38rem); color: var(--texto-inv); }
+.pase .apunte { margin-top: 1.4rem; color: var(--texto-inv-s); }
+.pase__alergenos {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: 1.5rem 0 0;
+}
+.pase__alergenos b {
+  font-weight: 400; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--dorado); margin-right: .5rem;
+}
+.pase__alergenos span {
+  padding: .22rem .75rem; border: 1px solid rgba(181,154,85,.4); border-radius: 999px;
+  font-size: .76rem; color: var(--texto-inv-s);
+}
+.pase--homenaje .pase__num { color: var(--dorado); -webkit-text-stroke: 0; }
+.pase--homenaje .pase__plato { border-color: var(--terracota); background: rgba(166,79,50,.12); }
+
+/* ---- Movil */
+@media (max-width: 700px) {
+  .carta-grupo__cab { flex-direction: column; align-items: flex-start; }
+  .carta-grupo__num {
+    position: absolute; top: .9rem; right: 1.2rem; font-size: 3.6rem; opacity: .55;
+  }
+  .platos { padding-inline: 1.1rem; }
+  .plato__cab { gap: .5rem; }
+  .plato__guia { min-width: .8rem; }
+  .plato--destacado { margin-inline: -.6rem; padding-inline: .6rem; }
+  .pase { grid-template-columns: 50px minmax(0, 1fr); gap: .9rem; }
+  .pase__num { font-size: 2rem; letter-spacing: 0; }
+  .pase__plato { padding: 1.05rem 1.1rem 1.1rem; }
+}
+
+.pase__num, .plato__precio { font-variant-numeric: lining-nums; }

@@ -307,28 +307,35 @@
   var lista = document.querySelector('[data-pases]');
   if (lista) {
     var h = '';
+    function chips(p) {
+      if (!p || !p.alergenos || !p.alergenos.length) return '';
+      return '<p class="pase__alergenos"><b>Al&eacute;rgenos</b>' +
+        p.alergenos.map(function (a) { return '<span>' + a + '</span>'; }).join('') + '</p>';
+    }
     datos.forEach(function (p, i) {
       h += '<article class="pase reveal">' +
-        '<div class="pase__num">' + String(i + 1).padStart(2, '0') + '</div>' +
-        '<div>' +
-          '<p class="pase__provincia">' + p.nombre + ' &middot; ' + p.titular + '</p>' +
-          '<h3>' + p.pase + '</h3>' +
+        '<div class="pase__riel"><span class="pase__num">' + String(i + 1).padStart(2, '0') + '</span></div>' +
+        '<div class="pase__cuerpo">' +
+          '<p class="pase__provincia">' + p.nombre + '</p>' +
+          '<h3 class="pase__titular">' + p.titular + '</h3>' +
+          '<p class="pase__plato">' + p.pase + '</p>' +
           '<p class="pase__desc">' + p.texto + '</p>' +
           salaCita(p.id) +
-          apunte(p) + alergenos(p) +
+          apunte(p) + chips(p) +
           (p.img ? '<div class="pase__foto"><div class="marco marco--ancho marco--filete"><img src="' + p.img + '" alt="' + (p.alt || p.nombre) + '" loading="lazy"></div></div>' : '') +
         '</div>' +
       '</article>';
     });
     if (window.HOMENAJE) {
       h += '<article class="pase pase--homenaje reveal">' +
-        '<div class="pase__num">09</div>' +
-        '<div>' +
-          '<p class="pase__provincia">' + window.HOMENAJE.nombre + '</p>' +
-          '<h3>' + window.HOMENAJE.pase + '</h3>' +
+        '<div class="pase__riel"><span class="pase__num">09</span></div>' +
+        '<div class="pase__cuerpo">' +
+          '<p class="pase__provincia">Homenaje final</p>' +
+          '<h3 class="pase__titular">' + window.HOMENAJE.nombre + '</h3>' +
+          '<p class="pase__plato">' + window.HOMENAJE.pase + '</p>' +
           '<p class="pase__desc">' + window.HOMENAJE.texto + '</p>' +
           salaCita('homenaje') +
-          apunte(window.HOMENAJE) + alergenos(window.HOMENAJE) +
+          apunte(window.HOMENAJE) + chips(window.HOMENAJE) +
         '</div>' +
       '</article>';
     }
