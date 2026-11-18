@@ -2354,7 +2354,7 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 
 /* ---- Iconos de linea en la banda de cada seccion de la carta */
 .carta-grupo__icono {
-  display: block; width: 40px; height: 40px; margin: 0 0 1.1rem;
+  display: block; width: 52px; height: 52px; margin: 0 0 1.1rem;
   fill: none; stroke: var(--dorado-claro); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;
 }
 
