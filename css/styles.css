@@ -2309,3 +2309,45 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 }
 
 .pase__num, .plato__precio { font-variant-numeric: lining-nums; }
+
+/* ---- Cabecera de la carta: pestanas, frase y barra de filtros */
+.carta-pestanas { margin-top: clamp(.4rem, 1.5vw, 1.2rem); }
+.carta-pestana { align-items: center; text-align: center; padding: 1.6rem 1.5rem 1.8rem; }
+.carta-pestana span { font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.1rem); }
+.carta-pestana.es-activa::after { left: 22%; right: 22%; bottom: .9rem; background: linear-gradient(90deg, transparent, var(--dorado), transparent); }
+[data-carta-intro] {
+  position: relative; max-width: 58ch; margin: 2.2rem auto 0 !important; padding: 1.8rem 0 clamp(2.2rem, 4vw, 3rem);
+  text-align: center; font-size: clamp(1.25rem, 1.1rem + .6vw, 1.55rem); line-height: 1.5; color: var(--texto-medio);
+}
+[data-carta-intro]::before {
+  content: ''; position: absolute; top: 0; left: 50%; width: 9px; height: 9px;
+  background: var(--dorado); transform: translateX(-50%) rotate(45deg);
+}
+[data-carta-intro]::after {
+  content: ''; position: absolute; top: 4px; left: 50%; width: min(260px, 60%); height: 1px; transform: translateX(-50%); z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(181,154,85,.8), transparent);
+}
+[data-carta-intro]::before { box-shadow: 0 0 0 7px var(--marfil); }
+
+/* Barra pegajosa: una sola fila, filtros con desplazamiento lateral */
+.carta-barra { padding-block: .6rem; }
+.carta-barra__int { flex-wrap: nowrap; gap: 1.2rem; }
+.filtros {
+  flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+  padding: .2rem 1.4rem .2rem 0;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2rem), transparent);
+          mask-image: linear-gradient(90deg, #000 calc(100% - 2rem), transparent);
+}
+.filtros::-webkit-scrollbar { display: none; }
+.filtro { flex: none; }
+.buscador { flex: 0 0 240px; }
+@media (max-width: 760px) {
+  .carta-barra__int { flex-wrap: wrap; gap: .5rem; }
+  .filtros { flex: 1 1 100%; }
+  .buscador { flex: 1 1 100%; }
+  .buscador input { padding-block: .5rem; }
+  [data-carta-intro] { margin-top: 1.6rem !important; padding-top: 1.5rem; }
+}
+
+[data-carta] > .carta-grupo:first-child { margin-top: 0; }
+.carta-barra + .seccion { padding-top: clamp(2rem, 4vw, 3rem); }
