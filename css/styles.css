@@ -2397,3 +2397,22 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 .pases--vivos .pase--homenaje .pase__num { background: none; }
 .pases--vivos .pase__riel::after { transform: scaleY(var(--prog, 0)); transform-origin: top; }
 .pases--vivos .pase.es-activo .pase__provincia { color: var(--marfil); }
+
+/* ---- Pequenas animaciones de la carta */
+@media (prefers-reduced-motion: no-preference) {
+  /* Cada plato aparece con un leve desfase cuando su seccion entra en pantalla */
+  .carta-grupo.reveal .plato { opacity: 0; transform: translateY(14px); }
+  .carta-grupo.reveal.es-visible .plato {
+    opacity: 1; transform: none;
+    transition: opacity 650ms ease, transform 650ms cubic-bezier(.22,.61,.36,1);
+    transition-delay: calc(var(--i, 0) * 70ms + 120ms);
+  }
+  /* El precio se ilumina un instante al pasar el raton por el plato */
+  .plato:hover .plato__precio { animation: brillo-precio 1100ms ease-out; }
+  .plato:hover .plato__guia { border-bottom-color: var(--dorado); transition: border-color 300ms ease; }
+}
+@keyframes brillo-precio {
+  0%   { color: var(--terracota); text-shadow: none; }
+  30%  { color: #D4663A; text-shadow: 0 0 14px rgba(212,102,58,.45), 0 0 2px rgba(216,192,137,.8); }
+  100% { color: var(--terracota); text-shadow: none; }
+}

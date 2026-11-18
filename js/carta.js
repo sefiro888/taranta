@@ -64,11 +64,11 @@
         '<span class="carta-grupo__num" aria-hidden="true">' + ROMANOS[orden[carta] - 1] + '</span>' +
         '</header><div class="platos">';
 
-      platos.forEach(function (p) {
+      platos.forEach(function (p, n) {
         var busca = (p.nombre + ' ' + (p.desc || '')).toLowerCase();
         var clases = 'plato' + (p.destacado ? ' plato--destacado' : '');
         html += '<article class="' + clases + '" data-plato="' + p.id + '" data-busca="' +
-          esc(busca) + '" data-cat="' + p.cat + '">';
+          esc(busca) + '" data-cat="' + p.cat + '" style="--i:' + Math.min(n, 9) + '">';
 
         html += '<div class="plato__cab"><h3 class="plato__nombre">' + p.nombre + '</h3>' +
           '<span class="plato__guia" aria-hidden="true"></span>' + precioHTML(p) + '</div>';
