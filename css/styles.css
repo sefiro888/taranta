@@ -2354,8 +2354,8 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
 
 /* ---- Iconos de linea en la banda de cada seccion de la carta */
 .carta-grupo__icono {
-  display: block; width: 56px; height: 56px; margin: 0 0 1rem;
-  fill: none; stroke: var(--dorado-claro); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round;
+  display: block; width: 40px; height: 40px; margin: 0 0 1.1rem;
+  fill: none; stroke: var(--dorado-claro); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;
 }
 
 /* ---- Hoja de platos: papel con grano y un alicatado apenas insinuado */
