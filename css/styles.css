@@ -2416,3 +2416,19 @@ body.menu-abierto .cookies { opacity: 0; pointer-events: none; }
   30%  { color: #D4663A; text-shadow: 0 0 14px rgba(212,102,58,.45), 0 0 2px rgba(216,192,137,.8); }
   100% { color: var(--terracota); text-shadow: none; }
 }
+
+/* ---- Reservar mesa, al final de cada carta */
+.carta-reserva {
+  position: relative; margin-top: clamp(2.6rem, 5vw, 4rem); text-align: center;
+  padding: clamp(2.2rem, 5vw, 3.6rem) clamp(1.4rem, 4vw, 3rem);
+  background: radial-gradient(120% 160% at 50% 0%, #2c261d 0%, var(--carbon) 62%);
+  border: 1px solid rgba(181,154,85,.6); color: var(--texto-inv);
+}
+.carta-reserva::before { content: ''; position: absolute; inset: 7px; pointer-events: none; border: 1px solid rgba(181,154,85,.3); }
+.carta-reserva .kicker { color: var(--dorado-claro); justify-content: center; }
+.carta-reserva h2 { color: var(--marfil); font-weight: 400; margin: .3rem 0 .8rem; font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem); line-height: 1.1; }
+.carta-reserva__adorno { position: relative; display: block; width: 150px; height: 11px; margin: 0 auto 1.3rem; }
+.carta-reserva__adorno::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, transparent, var(--dorado), transparent); }
+.carta-reserva__adorno::after { content: ''; position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; background: var(--dorado); transform: translate(-50%, -50%) rotate(45deg); box-shadow: 0 0 0 6px #1b1814; }
+.carta-reserva__texto { max-width: 46ch; margin: 0 auto 1.8rem; font-family: var(--display); font-size: clamp(1.15rem, 1.05rem + .4vw, 1.35rem); line-height: 1.5; color: var(--texto-inv-s); }
+@media (max-width: 520px) { .carta-reserva .acciones { flex-direction: column; } .carta-reserva .boton { width: 100%; justify-content: center; text-align: center; } }
