@@ -307,6 +307,15 @@
   var lista = document.querySelector('[data-pases]');
   if (lista) {
     var h = '';
+    /* Miniatura del mapa: la provincia del pase, iluminada en dorado */
+    function mini(id) {
+      var h = '<svg class="pase__mapa' + (id ? '' : ' pase__mapa--todo') + '" viewBox="0 0 1000 584" aria-hidden="true" focusable="false">';
+      Object.keys(GEO.paths).forEach(function (k) {
+        h += '<path' + (k === id ? ' class="on"' : '') + ' d="' + GEO.paths[k] + '"/>';
+      });
+      if (id && GEO.cent[id]) h += '<circle cx="' + GEO.cent[id][0] + '" cy="' + GEO.cent[id][1] + '" r="15"/>';
+      return h + '</svg>';
+    }
     function chips(p) {
       if (!p || !p.alergenos || !p.alergenos.length) return '';
       return '<p class="pase__alergenos"><b>Al&eacute;rgenos</b>' +
@@ -315,7 +324,7 @@
     datos.forEach(function (p, i) {
       h += '<article class="pase reveal">' +
         '<div class="pase__riel"><span class="pase__num">' + String(i + 1).padStart(2, '0') + '</span></div>' +
-        '<div class="pase__cuerpo">' +
+        '<div class="pase__cuerpo">' + mini(p.id) +
           '<p class="pase__provincia">' + p.nombre + '</p>' +
           '<h3 class="pase__titular">' + p.titular + '</h3>' +
           '<p class="pase__plato">' + p.pase + '</p>' +
@@ -329,7 +338,7 @@
     if (window.HOMENAJE) {
       h += '<article class="pase pase--homenaje reveal">' +
         '<div class="pase__riel"><span class="pase__num">09</span></div>' +
-        '<div class="pase__cuerpo">' +
+        '<div class="pase__cuerpo">' + mini(null) +
           '<p class="pase__provincia">Homenaje final</p>' +
           '<h3 class="pase__titular">' + window.HOMENAJE.nombre + '</h3>' +
           '<p class="pase__plato">' + window.HOMENAJE.pase + '</p>' +
@@ -340,6 +349,31 @@
       '</article>';
     }
     lista.innerHTML = h;
+
+    /* El recorrido se dibuja al bajar: cada numero se rellena de oro y la
+       linea que une los pases crece segun el avance. Sin movimiento
+       (prefers-reduced-motion) se queda todo dibujado. */
+    var pasesEl = lista.querySelectorAll('.pase');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var pendiente = false;
+      var medir = function () {
+        pendiente = false;
+        var ref = window.innerHeight * 0.62;
+        pasesEl.forEach(function (el) {
+          var r = el.getBoundingClientRect();
+          var p = Math.max(0, Math.min(1, (ref - r.top) / r.height));
+          el.style.setProperty('--prog', p.toFixed(3));
+          el.style.setProperty('--num', Math.min(1, p * 2.6).toFixed(3));
+          el.classList.toggle('es-activo', p > 0 && p < 1);
+        });
+      };
+      var pedir = function () { if (!pendiente) { pendiente = true; requestAnimationFrame(medir); } };
+      lista.classList.add('pases--vivos');
+      window.addEventListener('scroll', pedir, { passive: true });
+      window.addEventListener('resize', pedir);
+      medir();
+    }
+
     if ('IntersectionObserver' in window) {
       var ob = new IntersectionObserver(function (ent) {
         ent.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('es-visible'); ob.unobserve(e.target); } });

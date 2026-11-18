@@ -32,6 +32,23 @@
       (p.unidad ? '<small>por ' + p.unidad + '</small>' : '') + '</p>';
   }
 
+  /* Iconos de linea, uno por seccion (se dibujan en dorado sobre la banda oscura) */
+  var ICONOS = {
+    molletes: '<path d="M6 29c0-8 8-14 18-14s18 6 18 14c0 4-3 6-6 6H12c-3 0-6-2-6-6Z"/><path d="M16 21l3 7M24 19l2 9M32 21l-1 7"/>',
+    tortillas: '<circle cx="24" cy="24" r="17"/><path d="M12 21c3-4 8-6 12-6s9 2 12 6"/><path d="M14 31c3 2 6 3 10 3s7-1 10-3"/><circle cx="24" cy="24" r="1.2"/>',
+    raciones: '<circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="11.5"/><circle cx="19" cy="24" r="3.6"/><circle cx="29.5" cy="24" r="3.6"/>',
+    alacena: '<path d="M20 5h8v8l4 6v22a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V19l4-6V5Z"/><path d="M16 27h16M16 35h16"/><path d="M22 9h4"/>',
+    frios: '<path d="M24 5v38M7.5 14.5l33 19M7.5 33.5l33-19"/><path d="M20 8l4 4 4-4M20 40l4-4 4 4"/>',
+    calientes: '<path d="M24 4c2 8 11 11 11 22a11 11 0 0 1-22 0c0-5 3-8 5-10 0 4 2 6 4 6 0-6-1-11 2-18Z"/><path d="M24 40a5 5 0 0 1-5-5c0-3 3-5 5-8 2 3 5 5 5 8a5 5 0 0 1-5 5Z"/>',
+    arroces: '<ellipse cx="24" cy="27" rx="17" ry="8"/><path d="M7 27H2M41 27h5"/><circle cx="16" cy="26" r="1"/><circle cx="23" cy="29" r="1"/><circle cx="30" cy="26" r="1"/><circle cx="26" cy="23.5" r="1"/><path d="M18 14c0-3 3-3 3-6M26 14c0-3 3-3 3-6"/>',
+    lonja: '<path d="M4 24c6-9 16-12 24-9 3 1 6 4 8 9-2 5-5 8-8 9-8 3-18 0-24-9Z"/><path d="M36 24l8-8v16l-8-8Z"/><circle cx="14" cy="22" r="1.3"/><path d="M20 17c2 4 2 10 0 14"/>',
+    carnes: '<path d="M7 21c0-8 8-12 17-12 8 0 14 4 16 9 2 7-2 15-11 18-10 3-22-1-22-15Z"/><path d="M15 21h18M24 21v13"/><path d="M12 17c2-2 4-3 7-4"/>',
+    postres: '<path d="M16 23l8 20 8-20"/><path d="M13 23a11 11 0 1 1 22 0Z"/><path d="M19 29l4 6M25 27l3 7"/>'
+  };
+  function iconoHTML(id) {
+    return ICONOS[id] ? '<svg class="carta-grupo__icono" viewBox="0 0 48 48" aria-hidden="true" focusable="false">' + ICONOS[id] + '</svg>' : '';
+  }
+
   /* ------------------------------------------------------------- Render */
   function pintar() {
     var html = '';
@@ -47,6 +64,7 @@
         carta + '" id="cat-' + cat.id + '">' +
         '<header class="carta-grupo__cab">' +
         '<div class="carta-grupo__tit">' +
+        iconoHTML(cat.id) +
         '<p class="kicker">' + cat.kicker + '</p>' +
         '<h2>' + cat.nombre + '</h2>' +
         '<span class="carta-grupo__adorno" aria-hidden="true"></span>' +
