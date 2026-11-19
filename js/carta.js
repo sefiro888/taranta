@@ -209,7 +209,6 @@
         '<div class="ficha-plato__etiquetas" data-ficha-etiquetas></div>' +
         '<div class="acciones" style="margin-top:1.6rem">' +
           '<a class="boton" href="reservas.html">Reservar mesa</a>' +
-          '<a class="boton boton--wa" data-ficha-wa href="#" target="_blank" rel="noopener">Preguntar por WhatsApp</a>' +
         '</div>' +
         '<p class="pie-foto" data-ficha-credito></p>' +
       '</div>' +
@@ -244,10 +243,6 @@
 
     ficha.querySelector('[data-ficha-credito]').textContent =
       'Fotografía publicada por La Taranta en su Instagram';
-
-    var msg = 'Hola, me gustaría preguntar por el plato «' + p.nombre + '» de La Taranta.';
-    ficha.querySelector('[data-ficha-wa]').href =
-      'https://wa.me/34621153815?text=' + encodeURIComponent(msg);
 
     focoPrevio = document.activeElement;
     ficha.classList.add('es-abierta');

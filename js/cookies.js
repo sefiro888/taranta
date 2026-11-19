@@ -7,7 +7,7 @@
    LSSI: consentimiento previo, no un cartel encima de algo ya cargado.
 
    Si rechaza, en el hueco del iframe queda un aviso con la alternativa
-   (telefono, WhatsApp, enlace al mapa), para que la pagina siga sirviendo.
+   (telefono, enlace al mapa), para que la pagina siga sirviendo.
 
    La decision se guarda en localStorage durante 180 dias. No se envia a
    ningun sitio ni identifica a nadie.

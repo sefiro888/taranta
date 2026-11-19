@@ -3,13 +3,13 @@
    -------------------------------------------------------------------------
    DEMO: ningun formulario envia datos a un servidor. Al validarse
    correctamente se muestra un mensaje de confirmacion y se ofrece continuar
-   por WhatsApp o por telefono. Antes de publicar habra que conectar el
+   por correo o por telefono. Antes de publicar habra que conectar el
    formulario con el correo o el sistema de reservas del restaurante.
    ========================================================================= */
 (function () {
   'use strict';
 
-  var WA = (window.LT && window.LT.whatsapp) || '34621153815';
+  var CORREO = 'galiandarosal@gmail.com';
 
   function texto(el) { return (el.value || '').trim(); }
 
@@ -66,7 +66,7 @@
     return true;
   }
 
-  function mensajeWhatsApp(form) {
+  function mensajeCorreo(form) {
     var d = new FormData(form);
     var tipo = form.getAttribute('data-form') || 'consulta';
     var lineas = [];
@@ -91,7 +91,8 @@
     if (d.get('nombre')) lineas.push('Nombre: ' + d.get('nombre'));
     if (d.get('mensaje')) lineas.push('Mensaje: ' + d.get('mensaje'));
 
-    return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(lineas.join('\n'));
+    return 'mailto:' + CORREO + '?subject=' + encodeURIComponent('Consulta desde la web') +
+      '&body=' + encodeURIComponent(lineas.join('\n'));
   }
 
   document.querySelectorAll('form[data-form]').forEach(function (form) {
@@ -123,9 +124,9 @@
         return;
       }
 
-      var enlace = mensajeWhatsApp(form);
+      var enlace = mensajeCorreo(form);
       if (exito) {
-        var boton = exito.querySelector('[data-wa]');
+        var boton = exito.querySelector('[data-correo]');
         if (boton) boton.setAttribute('href', enlace);
         exito.classList.add('es-visible');
         exito.setAttribute('tabindex', '-1');
@@ -136,12 +137,6 @@
     });
   });
 
-  /* ---------------------- Enlaces de WhatsApp con mensaje predefinido */
-  document.querySelectorAll('[data-wa-simple]').forEach(function (a) {
-    var msg = a.getAttribute('data-wa-simple') ||
-      'Hola, me gustaría consultar disponibilidad para reservar en La Taranta.';
-    a.setAttribute('href', 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg));
-  });
 
 
   /* ------------------ Widget de reservas (CoverManager): ajuste de altura

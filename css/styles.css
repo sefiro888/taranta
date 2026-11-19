@@ -237,8 +237,6 @@ p:last-child { margin-bottom: 0; }
   --b-bg: var(--marfil); --b-fg: var(--carbon); --b-bd: var(--marfil);
 }
 
-.boton--wa { --b-bg: #25632F; --b-bd: #25632F; }
-.boton--wa:hover { --b-bg: #1E7B34; --b-bd: #1E7B34; }
 
 .boton--peq { padding: .72rem 1.4rem; font-size: .66rem; }
 
@@ -1266,7 +1264,6 @@ button.plato__foto:hover img { transform: scale(1.07); }
 .flotantes { transition: opacity var(--trans-rapida), visibility var(--trans-rapida), transform var(--trans-rapida); }
 .flotantes .flotante { transition: transform var(--trans-rapida), opacity var(--trans-rapida); }
 .flotante svg { width: 26px; height: 26px; fill: currentColor; }
-.flotante--wa { background: #25632F; }
 .flotante--tel { background: var(--oliva); display: none; }
 
 /* ------------------------------------------- 17 bis. BARRA MOVIL DE RESERVA */

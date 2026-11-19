@@ -119,6 +119,4 @@
   /* ------------------------------------ Aviso: demo sin envio a servidor */
   window.LT = window.LT || {};
   window.LT.telefono = '+34984265252';
-  window.LT.whatsapp = '34621153815';
-  window.LT.mensajeWA = 'Hola, me gustaría consultar disponibilidad para reservar en La Taranta.';
 }());

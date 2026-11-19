@@ -51,8 +51,6 @@ NAV = [
 ]
 
 RESERVAS = 'reservas.html'
-WA = ('https://wa.me/34621153815?text=Hola%2C%20me%20gustar%C3%ADa%20consultar'
-      '%20disponibilidad%20para%20reservar%20en%20La%20Taranta.')
 TEL = '+34984265252'
 TEL_TXT = '984 26 52 52'
 
@@ -165,10 +163,9 @@ def movil(actual):
         '  </nav>\n'
         '  <div class="menu-movil__pie">\n'
         '    <a class="boton" href="%s">Reservar mesa</a>\n'
-        '    <a class="boton boton--wa" href="%s" target="_blank" rel="noopener">WhatsApp</a>\n'
         '    <a class="boton boton--fantasma" href="tel:%s">Llamar %s</a>\n'
         '  </div>\n'
-        '</div>' % (RESERVAS, aqui_res, RESERVAS, WA, TEL, TEL_TXT))
+        '</div>' % (RESERVAS, aqui_res, RESERVAS, TEL, TEL_TXT))
 
 
 # -------------------------------------------------------------------- APLICAR

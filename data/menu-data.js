@@ -35,7 +35,7 @@ window.MENU_DATA = {
     { id: 'molletes', carta: 'desayunos', nombre: 'Molletes de Antequera', kicker: 'Con nuestro A.O.V.E. temprano',
       texto: 'El pan tierno de Antequera, abierto y regado con el aceite de oliva virgen extra de la casa.' },
     { id: 'tortillas', carta: 'desayunos', nombre: 'Nuestras tortillas', kicker: 'Recién cuajadas',
-      texto: 'Tortilla de patatas de todos los días y la del queso de cabra con cebolla caramelizada.' },
+      texto: 'Tortilla de patatas con queso de cabra y cebolla caramelizada, recién cuajada.' },
 
     /* --- Raciones --- */
     { id: 'raciones', carta: 'raciones', nombre: 'Nuestras raciones', kicker: 'Media o entera',
@@ -69,8 +69,6 @@ window.MENU_DATA = {
     { id: 'b4', cat: 'molletes', nombre: 'Mantequilla y mermelada',
       desc: 'Para quien prefiere empezar el día en dulce.', precio: 3.00 },
 
-    { id: 't1', cat: 'tortillas', nombre: 'Tortilla de patatas',
-      desc: 'Pincho de tortilla de la casa.', precio: 3.50 },
     { id: 't2', cat: 'tortillas', nombre: 'Tortilla de patatas de queso de cabra y cebolla caramelizada',
       desc: 'Con queso de cabra y cebolla caramelizada.', precio: 4.00, destacado: true },
     { id: 't3', cat: 'tortillas', nombre: 'Dulce típico del día',
@@ -134,7 +132,7 @@ window.MENU_DATA = {
       desc: 'Anacardos, mayonesa de soja, emulsión de mostaza y queso ahumado.', precio: 18.50, },
 
     { id: 'c1', cat: 'calientes', nombre: 'Pulpo a la parrilla',
-      desc: 'Crema de cuarrécano con toque picante y esponja de plácton.', precio: 27.80, destacado: true,
+      desc: 'Crema de cuarrécano con toque picante y esponja de plácton.', precio: 27.80, destacado: true,
       nota: 'Grafía de «cuarrécano» y «plácton» según la carta original: pendiente de confirmar.' },
     { id: 'c2', cat: 'calientes', nombre: 'Mollejas de cordero salteadas',
       desc: 'Sepia, alcachofas y jugo de ostras.', precio: 26.00, destacado: true, },
